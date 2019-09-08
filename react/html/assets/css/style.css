@@ -1,0 +1,241 @@
+
+/*
+=========================== Fonts Styles =======================*/
+
+@font-face {
+    font-family: 'Proxima Nova Rg';
+    src: url('../fonts/ProximaNova-Regular.eot');
+    src: url('../fonts/ProximaNova-Regular.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/ProximaNova-Regular.woff2') format('woff2'),
+        url('../fonts/ProximaNova-Regular.woff') format('woff'),
+        url('../fonts/ProximaNova-Regular.ttf') format('truetype'),
+        url('../fonts/ProximaNova-Regular.svg#ProximaNova-Regular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family:"Material Design Icons";
+    src: url('../fonts/materialdesignicons-webfont.eot');
+    src: url('../fonts/materialdesignicons-webfont.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/materialdesignicons-webfont.woff2') format('woff2'),
+        url('../fonts/materialdesignicons-webfont.woff') format('woff'),
+        url('../fonts/materialdesignicons-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+
+
+/*
+=========================== Gloabal Styles =======================*/
+
+body{
+    font-family: 'Proxima Nova Rg';
+}
+
+button{
+    background-color: #D8D8D8;
+    border: 1px solid #979797;
+    border-radius: 21px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 600;
+    width: 100%; 
+    padding: 10px;
+}
+button:focus{
+    outline: 0;
+}
+
+.form-group{
+    margin-bottom: 1.3rem;
+}
+
+/*
+============================== Theme Styles ========================*/
+
+.darker-grey{
+    background: #D8D8D8;
+}
+
+
+/*
+============================== Placeholder Styles ========================*/
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    text-align: center
+}
+::-moz-placeholder { /* Firefox 19+ */
+    text-align: center
+}
+:-ms-input-placeholder { /* IE 10+ */
+    text-align: center
+}
+:-moz-placeholder { /* Firefox 18- */
+    text-align: center
+}
+
+
+
+/*
+============================== Login & Other Styles ========================*/
+
+.loginOut{
+    border: 1px solid #ccc;
+    background-color: #F3F3F3;
+    padding: 40px 20px 80px 20px;
+    transform: translate(0, 50%);
+}
+
+.loginOut h4{
+    font-size: 24px;
+    margin: 0;
+    font-weight: 600;
+}
+
+.loginOut p{
+    font-size: 16px;
+    color: #707070;
+    margin: 0 0 20px 0;
+}
+.loginOut input[type="text"], .loginOut input[type="email"], .loginOut input[type="number"]{
+    width: 100%;
+    height: 50px;
+    padding: 0 0 0 10px;
+    border-radius: 4px;
+}
+
+.loginOut .forgotPin{
+    display: block;
+    text-align: center;
+    font-size: 14px;
+    color: #707070;
+    font-weight: 800;
+    margin: 10px 0 30px 0;  
+}
+
+/*
+============================== Dashboard Styles ========================*/
+
+.dashboardLeftContent{
+    margin: 0;
+    padding: 6rem 0;
+}
+
+.dashboardLeftContent .top{
+    margin: 0;
+    padding: 0;
+}
+
+.dashboardLeftContent .top i{
+    margin: 0 auto;
+    padding: 0;
+    width: 120px;
+    height: 120px;
+    display: block;
+    border-radius: 50%;
+    overflow: hidden;
+}
+.dashboardLeftContent .top i img{
+    width: 100%;
+    max-width: 100%;
+}
+.dashboardLeftContent .top h3{
+    color: #707070;
+    font-size: 26px;
+    margin: 10px 0 0 0;
+    text-align: center;
+    font-weight: 600;
+}
+.dashboardLeftContent .middle{
+    margin: 4rem 3rem 5rem 3rem;
+}
+.dashboardLeftContent .middle h1{
+    margin: 0;
+    font-size: 42px;
+    text-align: center;
+    font-weight: 800;
+}
+.dashboardLeftContent .middle h1 small{
+    margin: 0;
+    display: block;
+    font-size: 14px;
+    color: #707070;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.dashboardLeftContent .bottom{
+    margin: 0;
+    padding: 0;
+}
+
+.dashboardLeftContent .bottom .circleOut{
+    margin: 0;
+    padding: 0;
+}
+.dashboardLeftContent .bottom .circleOut i{
+    margin: 0 auto;
+    padding: 0;
+    width: 90px;
+    height: 90px;
+    display: block;
+    overflow: hidden;
+    border-radius: 50%;
+    text-align: center;
+    background-color: #D8D8D8;
+}
+.dashboardLeftContent .bottom .circleOut h6{
+    text-align: center;
+    color: #707070;
+    font-size: 16px;
+    margin: .5rem 0 0 0;
+}
+
+
+.dashboardRightContent{
+    margin: 0;
+    padding: 0;
+}
+
+.dashboardRightContent h4{
+    margin: 0;
+    padding: 3rem 0;
+    font-size: 24px;
+    font-weight: 800;
+}
+.dashboardRightContent .circleOut{
+    margin: 0 0 20px 0;
+    padding: 0;
+}
+
+.dashboardRightContent .circleOut i{
+    margin: 0 auto;
+    padding: 0;
+    width: 90px;
+    height: 90px;
+    display: block;
+    overflow: hidden;
+    border-radius: 50%;
+    text-align: center;
+    background-color: #D8D8D8;
+}
+.dashboardRightContent .circleOut i.icons{
+    background: #fff;
+    padding: 1rem;
+    font-size: 45px;
+    color: #9B9B9B; 
+}
+
+.dashboardRightContent .circleOut i img{
+    width: 100%;
+    max-width: 100%;
+}
+.dashboardRightContent .circleOut h6{
+    text-align: center;
+    color: #707070;
+    font-size: 16px;
+    margin: .5rem 0 0 0;
+}
