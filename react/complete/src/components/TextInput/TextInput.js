@@ -14,6 +14,7 @@ const TextInput = props => (
       className={props.className}
       placeholder={props.placeholder}
     />
+    {props.haserror && <span className={props.haserror ? "help-block" : ""}>{props.errormessage}</span>}
   </div>
 );
 
@@ -28,6 +29,8 @@ TextInput.defaultProps = {
   type: 'input',
   className: 'form-control',
   placeholder: '',
+  haserror:false,
+  errormessage:''
 };
 
 TextInput.propTypes = {
@@ -41,6 +44,8 @@ TextInput.propTypes = {
   type: PropTypes.string,
   className: PropTypes.string,
   placeholder: PropTypes.string,
+  haserror:PropTypes.bool,
+  errormessage:PropTypes.string,
 };
 
 export default TextInput;
