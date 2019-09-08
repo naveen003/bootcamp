@@ -1,6 +1,5 @@
-/* eslint-disable react/prefer-stateless-function */
 import React from 'react';
-import FormValidator from '../../validator/formvalidator';
+import FormValidator from '../../validator/FormValidator';
 import PropTypes from 'prop-types';
 import styles from './Register.module.css';
 
@@ -9,51 +8,51 @@ import TextInput from '../../components/TextInput';
 class Register extends React.Component {
   constructor(props) {
     super(props);
-    
+
     this.validator = new FormValidator([
-      { 
-        field: 'firstname', 
-        method: 'isEmpty', 
-        validWhen: false, 
-        message: 'FirstName is required.' 
-      },
-      { 
-        field: 'lastname',
-        method: 'isEmpty', 
-        validWhen: false, 
-        message: 'Lastname is required.'
-      },
-      { 
-        field: 'mobile', 
-        method: 'isEmpty', 
-        validWhen: false, 
-        message: 'Pleave provide a phone number.'
+      {
+        field: 'firstname',
+        method: 'isEmpty',
+        validWhen: false,
+        message: 'FirstName is required.',
       },
       {
-        field: 'mobile', 
+        field: 'lastname',
+        method: 'isEmpty',
+        validWhen: false,
+        message: 'Lastname is required.',
+      },
+      {
+        field: 'mobile',
+        method: 'isEmpty',
+        validWhen: false,
+        message: 'Pleave provide a phone number.',
+      },
+      {
+        field: 'mobile',
         method: 'matches',
         args: [/^(?:\(\d{3}\)|\d{3}-)\d{3}-\d{4}$/], // args is an optional array of arguements that will be passed to the validation method
-        validWhen: true, 
-        message: 'That is not a valid phone number.'
+        validWhen: true,
+        message: 'That is not a valid phone number.',
       },
-      { 
-        field: 'email', 
-        method: 'isEmpty', 
-        validWhen: false, 
-        message: 'Email is required.'
-      },
-      { 
+      {
         field: 'email',
-        method: 'isEmail', 
-        validWhen: true, 
-        message: 'Please enter valid email.'
+        method: 'isEmpty',
+        validWhen: false,
+        message: 'Email is required.',
       },
-      { 
+      {
+        field: 'email',
+        method: 'isEmail',
+        validWhen: true,
+        message: 'Please enter valid email.',
+      },
+      {
         field: 'dob',
-        method: 'isISO8601', 
-        validWhen: true, 
+        method: 'isISO8601',
+        validWhen: true,
         message: 'Please enter valid dob.',
-        'use-strict':true
+        'use-strict': true,
       },
     ]);
 
@@ -75,25 +74,28 @@ class Register extends React.Component {
     const { target } = event;
     const { name } = target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
-    if(event.target.name === "mobile"){
-      let newstr = "";
-      if(value.length > 0){
-        let replacedStr = value.replace("(","").replace(")","").replace("-","");
-        if(replacedStr.length <= 3){
+    if (event.target.name === 'mobile') {
+      let newstr = '';
+      if (value.length > 0) {
+        const replacedStr = value
+          .replace('(', '')
+          .replace(')', '')
+          .replace('-', '');
+        if (replacedStr.length <= 3) {
           newstr = replacedStr;
-        }else if(replacedStr.length <= 6){
-          newstr = "(" + replacedStr.substring(0, 3) + ")";
-          newstr+=replacedStr.substring(3);
-        }else{
-          newstr = "(" + replacedStr.substring(0, 3) + ")";
-          newstr+=replacedStr.substring(3, 6) + "-";
+        } else if (replacedStr.length <= 6) {
+          newstr = `(${replacedStr.substring(0, 3)})`;
+          newstr += replacedStr.substring(3);
+        } else {
+          newstr = `(${replacedStr.substring(0, 3)})`;
+          newstr += `${replacedStr.substring(3, 6)}-`;
           newstr += replacedStr.substring(6);
         }
       }
       this.setState({ [name]: newstr }, () => {
         console.log(this.state[name]);
       });
-    }else{
+    } else {
       this.setState({ [name]: value }, () => {
         console.log(this.state[name]);
       });
@@ -106,34 +108,26 @@ class Register extends React.Component {
   //   });
   // }
 
-  handleSubmit(event) {
-    // const subscribed = this.state.subscribed ? 'Yes' : 'No';
-    // alert(
-    //   `Firstname: ${this.state.firstname}, Lastname: ${this.state.lastname}, Email: ${this.state.email}, Language: ${this.state.languages}, Subscribed: ${subscribed}`,
-    // );
-    /*if (this.state.email === 'test@test.com') {
-      this.setState({
-        isRegistered: true,
-      });
-    } else {
-      this.setState({
-        isRegistered: false,
-      });
-    }
-    this.props.history.push("/verifypin");*/
-    event.preventDefault();
-    this.submitted = true;
-    const validation = this.validator.validate(this.state);
-    this.setState({ validation });
+  navigateOnRegister(validation) {
     if (validation.isValid) {
-        alert("Validation Success...");
+      if (this.props.history !== undefined) {
+        this.props.history.push("/verifypin");
+      }
     }
   }
 
+  handleSubmit(event) {
+    event.preventDefault();
+    this.submitted = true;
+    const isFormValid = this.validator.validate(this.state);
+    this.setState({ validation: isFormValid });
+    this.navigateOnRegister(isFormValid);
+  }
+
   render() {
-    let validation = this.submitted ?
-                      this.validator.validate(this.state) :
-                      this.state.validation
+    const validation = this.submitted
+      ? this.validator.validate(this.state)
+      : this.state.validation;
     return (
       <div className="row">
         <div className="offset-md-1 col-md-10">
@@ -160,7 +154,7 @@ class Register extends React.Component {
                   <TextInput
                     labelFor="lastname"
                     label="Lastname"
-                    placeholder="Lsst Name"
+                    placeholder="Last Name"
                     className="form-control"
                     type="text"
                     name="lastname"
