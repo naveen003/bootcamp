@@ -6,7 +6,7 @@ describe('TextInput', () => {
   it('renders without error', () => {});
 
   test('showLabel  check', () => {
-    const wrapper = render(<TextInput showLabel label="text" />); // mount/render/shallow when applicable
-    expect(wrapper.find('label')).toHaveText('text');
+    const wrapper = shallow(<TextInput showLabel label="text" />); // mount/render/shallow when applicable
+    expect(wrapper.find('label').text()).toBe('text');
   });
 });
