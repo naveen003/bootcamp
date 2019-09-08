@@ -1,0 +1,29 @@
+import React from 'react';
+import { Route, BrowserRouter as Router } from 'react-router-dom';
+// import logo from './logo.svg';
+import 'bootstrap/dist/css/bootstrap.css';
+import './App.css';
+
+import Register from './pages/Register';
+import Login from './pages/Login';
+import VerifyPin from './pages/VerifyPin';
+import Home from './pages/Home';
+import SetLoginPin from './pages/SetLoginPin';
+import SetTransactionPin from './pages/SetTransactionPin';
+
+function App() {
+  return (
+    <Router>
+      <div className="container">
+        <Route exact path="/" component={Login} />
+        <Route path="/register" component={Register} />
+        <Route path="/verifypin" component={VerifyPin} />
+        <Route path="/home" component={Home} />
+        <Route path="/loginpin" component={SetLoginPin} />
+        <Route path="/transactionpin" component={SetTransactionPin} />
+      </div>
+    </Router>
+  );
+}
+
+export default App;
