@@ -5,31 +5,6 @@ import styles from './Register.module.css';
 
 import TextInput from '../../components/TextInput';
 
-// const Register = props => {
-//   return (
-//     <div className="row">
-//       <div className="offset-md-3 col-md-5">
-//           <div className="loginOut">
-//               <h4>Welcome</h4>
-//               <p>Please enter your pin to access your account</p>
-//               <div className="form-group">
-//                   <input type="number" className="form-control" />
-//               </div>
-//               <a href="javascript:;" className="forgotPin">Forgot pin?</a>
-//               <div className="row">
-//                   <div className="col-md-6">
-//                       <button type="submit">Login</button>
-//                   </div>
-//                   <div className="col-md-6">
-//                       <button>Signup</button>
-//                   </div>
-//               </div>
-//           </div>
-//       </div>
-//   </div>
-//   );
-// };
-
 class Register extends React.Component {
   constructor(props) {
     super(props);
@@ -54,19 +29,28 @@ class Register extends React.Component {
     });
   }
 
-  handleMultiSelect(event) {
-    this.setState({
-      [event.target.name]: [...event.target.selectedOptions].map(o => o.value),
-    });
-  }
+  // handleMultiSelect(event) {
+  //   this.setState({
+  //     [event.target.name]: [...event.target.selectedOptions].map(o => o.value),
+  //   });
+  // }
 
   handleSubmit(event) {
-    const subscribed = this.state.subscribed ? 'Yes' : 'No';
-    alert(
-      `Firstname: ${this.state.firstname}, Lastname: ${this.state.lastname}, Email: ${this.state.email}, Language: ${this.state.languages}, Subscribed: ${subscribed}`,
-    );
-    event.preventDefault();
+    // const subscribed = this.state.subscribed ? 'Yes' : 'No';
+    // alert(
+    //   `Firstname: ${this.state.firstname}, Lastname: ${this.state.lastname}, Email: ${this.state.email}, Language: ${this.state.languages}, Subscribed: ${subscribed}`,
+    // );
+    if (this.state.email === 'test@test.com') {
+      this.setState({
+        isRegistered: true,
+      });
+    } else {
+      this.setState({
+        isRegistered: false,
+      });
+    }
     this.props.history.push("/verifypin");
+    event.preventDefault();
   }
 
   render() {

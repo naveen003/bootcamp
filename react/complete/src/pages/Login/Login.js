@@ -14,7 +14,7 @@ const Login = props => (
         <div className="form-group">
           <input type="number" className="form-control" />
         </div>
-        <a href="javascript:;" className="forgotPin">
+        <a href="/forgotPin" className="forgotPin">
           Forgot pin?
         </a>
         <div className="row">

@@ -2,27 +2,34 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './Button.module.css';
 
-const Button = (props) => {
-  const Tag = props.href? 'a':'button';
-  return <Tag {...props} />
-}
+const Button = props => (
+  <button
+    type={props.type}
+    name={props.name}
+    id={props.id}
+    onClick={props.onClick}
+    className={props.className}
+  >
+    {props.text}
+  </button>
+);
 
 Button.defaultProps = {
-  value: 'Button',
-  handleChange: function() {},
+  onClick: function() {},
   id: 'button',
   name: 'button',
   type: 'button',
-  className:''
+  className: '',
+  text: 'submit',
 };
 
 Button.propTypes = {
-  value: PropTypes.string,
-  handleChange: PropTypes.func,
+  onClick: PropTypes.func,
   id: PropTypes.string,
   name: PropTypes.string,
   type: PropTypes.string,
-  className:PropTypes.string
+  className: PropTypes.string,
+  text: PropTypes.string,
 };
 
 export default Button;

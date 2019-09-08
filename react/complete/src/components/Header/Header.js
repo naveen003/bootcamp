@@ -15,16 +15,14 @@ const Header = props => {
 };
 Header.defaultProps = {
   value: 'Header',
-  type: 1,
-  className:'',
-  inputtype:''
+  className: '',
+  inputtype: 'p',
 };
 
 Header.propTypes = {
   value: PropTypes.string,
-  type: PropTypes.number,
-  className:PropTypes.string,
-  inputtype:PropTypes.string
+  className: PropTypes.string,
+  inputtype: PropTypes.string,
 };
 
 export default Header;
