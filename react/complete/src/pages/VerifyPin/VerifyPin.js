@@ -1,5 +1,7 @@
 import React from 'react';
 import TextInput from '../../components/TextInput';
+import Button from '../../components/Button';
+import Header from '../../components/Header';
 import PropTypes from 'prop-types';
 import styles from './VerifyPin.module.css';
 
@@ -32,7 +34,7 @@ class VerifyPin extends React.Component{
   buttonClick(event){
     if(event !== null && event.target !== null && event.target !== undefined){
       if(event.target.name === "verify"){
-        alert("Feature Under Development");
+        this.props.history.push("/loginpin");
       }
     }
   }
@@ -42,8 +44,12 @@ class VerifyPin extends React.Component{
         <div className="row">
             <div className="offset-md-3 col-md-5">
                 <div className="loginOut">
-                    <h4>Verification</h4>
-                    <p>Please enter the OTP send to your registered emial/mobile number.</p>
+                <Header 
+                  value="Verification"
+                  inputtype="h4"/>
+                  <Header
+                  value="Please enter the OTP send to your registered emial/mobile number."
+                  inputtype="p"/>
                     <div className="form-group">
                       <TextInput
                           className="form-control"
@@ -56,7 +62,10 @@ class VerifyPin extends React.Component{
                     </div>
                     <div className="row">
                         <div className="offset-md-3 col-md-6 text-center">
-                            <button name="verify" type="button" onClick={(event)=>this.buttonClick(event)}>Verify</button>
+                        <Button
+                            name="verify"
+                            type="button"
+                            onClick={this.buttonClick}>Verify</Button>
                         </div>
                     </div>
                 </div>

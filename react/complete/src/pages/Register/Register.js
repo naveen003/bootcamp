@@ -66,6 +66,7 @@ class Register extends React.Component {
       `Firstname: ${this.state.firstname}, Lastname: ${this.state.lastname}, Email: ${this.state.email}, Language: ${this.state.languages}, Subscribed: ${subscribed}`,
     );
     event.preventDefault();
+    this.props.history.push("/verifypin");
   }
 
   render() {

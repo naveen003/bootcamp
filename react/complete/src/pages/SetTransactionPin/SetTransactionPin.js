@@ -1,5 +1,7 @@
 import React from 'react';
 import TextInput from '../../components/TextInput';
+import Button from '../../components/Button';
+import Header from '../../components/Header';
 import PropTypes from 'prop-types';
 import styles from './SetTransactionPin.module.css';
 
@@ -43,8 +45,12 @@ class  SetTransactionPin extends React.Component{
         <div className="row">
             <div className="offset-md-3 col-md-5">
                 <div className="loginOut">
-                    <h4>Last step.</h4>
-                    <p>Set your transaction pin</p>
+                <Header 
+                  value="Last step."
+                  inputtype="h4"/>
+                  <Header
+                  value="Set your transaction pin"
+                  inputtype="p"/>
                     <div className="form-group">
                     <TextInput
                           className="form-control"
@@ -69,7 +75,10 @@ class  SetTransactionPin extends React.Component{
                     </div>
                     <div className="row">
                         <div className="offset-md-3 col-md-6 text-center">
-                            <button name="verifypin" type="button" onClick={(event)=>this.buttonClick(event)}>Make me an account</button>
+                        <Button
+                            name="verifypin"
+                            type="button"
+                            onClick={this.buttonClick}>Make me an account</Button>
                         </div>
                     </div>
                 </div>

@@ -1,5 +1,7 @@
 import React from 'react';
 import TextInput from '../../components/TextInput';
+import Button from '../../components/Button';
+import Header from '../../components/Header';
 
 class  SetLoginPin extends React.Component{
   constructor(){
@@ -21,7 +23,7 @@ class  SetLoginPin extends React.Component{
   buttonClick(event){
     if(event !== null && event.target !== null && event.target !== undefined){
       if(event.target.name === "verifypin"){
-        alert("Feature Under Development");
+        this.props.history.push("/transactionpin");
       }
     }
   }
@@ -31,8 +33,12 @@ class  SetLoginPin extends React.Component{
         <div className="row">
             <div className="offset-md-3 col-md-5">
                 <div className="loginOut">
-                    <h4>Let’s get you set up</h4>
-                    <p>Set your login Pin</p>
+                  <Header 
+                  value="Let’s get you set up"
+                  inputtype="h4"/>
+                  <Header
+                  value="Set your login Pin"
+                  inputtype="p"/>
                     <div className="form-group">
                     <TextInput
                           className="form-control"
@@ -57,7 +63,11 @@ class  SetLoginPin extends React.Component{
                     </div>
                     <div className="row">
                         <div className="offset-md-3 col-md-6 text-center">
-                            <button name="verifypin" type="button" onClick={(event)=>this.buttonClick(event)}>Verify</button>
+                          <Button
+                            name="verifypin"
+                            id="verifypin"
+                            type="button"
+                            onClick={this.buttonClick}>Verify</Button>
                         </div>
                     </div>
                 </div>
