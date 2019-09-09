@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <title>:: Bootcamp ::</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="assets/css/style.css" rel="stylesheet" />
+    <link href="assets/css/materialdesignicons.min.css" rel="stylesheet" /> 
+    <link href="assets/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container">
+        <div class="historyOut">
+            <div class="header">
+                <div class="row">
+                    <div class="col-md-10">
+                        <h2>Add Payee</h2>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="dropdown">
+                            <button class="dropdownBtn" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="mdi mdi-filter-variant"></i> Filter
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <h5>Filter</h5>
+                                <div class="form-group">
+                                    <i class="mdi mdi-calendar-month-outline icon"></i>
+                                    <input type="text" id="fromDate" placeholder="From Date" class="form-control" />
+                                </div>
+                                <div class="form-group">
+                                        <i class="mdi mdi-calendar-month-outline icon"></i>
+                                    <input type="text" id="toDate" placeholder="To Date" class="form-control" />
+                                </div>
+                                <div class="row">
+                                    <div class="offset-md-2 col-md-5 text-right">
+                                        <button>Apply</button>
+                                    </div>
+                                    <div class="col-md-3 text-left">
+                                        <button>X</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="pr">
+                        <i class="mdi mdi-magnify icon"></i>
+                        <input type="number" class="innerSpace" placeholder="Seach Tag/Transaction ID/Payee Name" />
+                    </div>
+                </div>
+            </div>
+            <div class="tabsOut">
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="spends-tab" data-toggle="tab" href="#spends" role="tab" aria-controls="spends" aria-selected="true">Spends</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="received-tab" data-toggle="tab" href="#received" role="tab" aria-controls="received" aria-selected="false">Received</a>
+                    </li>
+                </ul>
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="spends" role="tabpanel" aria-labelledby="spends-tab">
+                        <p class="transDetails"><strong>1.792.000,00</strong><span>Total Spends from </span></p>
+                        <ul class="transLists">
+                            <li>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="profileDetailsOut">
+                                            <i><img src="assets/imgs/c6.jpg"/></i>
+                                            <h5>Payee Name <small>DD/MM/YY</small></h5>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 text-right">
+                                        <div class="amountDetails">
+                                            <p>50.000,00</p>
+                                            <p>TAG</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="profileDetailsOut">
+                                            <i><img src="assets/imgs/c6.jpg"/></i>
+                                            <h5>Payee Name <small>DD/MM/YY</small></h5>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 text-right">
+                                        <div class="amountDetails">
+                                            <p>50.000,00</p>
+                                            <p>TAG</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="profileDetailsOut">
+                                            <i><img src="assets/imgs/c6.jpg"/></i>
+                                            <h5>Payee Name <small>DD/MM/YY</small></h5>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 text-right">
+                                        <div class="amountDetails">
+                                            <p>50.000,00</p>
+                                            <p>TAG</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="profileDetailsOut">
+                                            <i><img src="assets/imgs/c6.jpg"/></i>
+                                            <h5>Payee Name <small>DD/MM/YY</small></h5>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 text-right">
+                                        <div class="amountDetails">
+                                            <p>50.000,00</p>
+                                            <p>TAG</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="tab-pane fade" id="received" role="tabpanel" aria-labelledby="received-tab">..sd.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="assets/js/jquery-3.4.1.min.js"></script>
+    <script src="assets/js/popper.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/moment.min.js"></script>
+    <script src="assets/js/bootstrap-datetimepicker.min.js"></script>
+    <script>
+        $(function () {
+            $('#fromDate, #toDate').datetimepicker();
+        });
+    </script>
+</body>
+</html>

@@ -51,6 +51,11 @@ button:focus{
 
 .form-group{
     margin-bottom: 1.3rem;
+    position: relative;
+}
+
+.pr{
+    position: relative;
 }
 
 /*
@@ -202,7 +207,7 @@ button:focus{
 
 .dashboardRightContent h4{
     margin: 0;
-    padding: 3rem 0;
+    padding: 3rem 3.7rem;
     font-size: 24px;
     font-weight: 800;
 }
@@ -238,4 +243,636 @@ button:focus{
     color: #707070;
     font-size: 16px;
     margin: .5rem 0 0 0;
+}
+
+/*
+============================== Existing Payee Styles ========================*/
+
+.existingPayeeOut{
+    margin: 0;
+    padding: 0;
+}
+.existingPayeeOut .header{
+    padding: 3rem 1rem;
+    background: #D8D8D8;
+}
+.existingPayeeOut .header .profileOut{
+    margin: 0;
+    padding: 0;
+}
+
+.existingPayeeOut .header .profileOut li{
+    margin: 0;
+    padding: 0;
+    float: left;
+    list-style: none;
+}
+
+.existingPayeeOut .header .profileOut li a{
+    margin: .7rem 0 0 0;
+    padding: 0;
+    float: left;
+    font-size: 25px;
+    list-style: none;
+    color: #000;
+    display: block;
+}
+.existingPayeeOut .header .profileOut li i{
+    margin: 0 1rem;
+    padding: 0; 
+    float: left;
+    list-style: none;
+    width: 60px;
+    height: 60px;
+    display: block;
+    overflow: hidden;
+    border-radius: 50%;
+}
+.existingPayeeOut .header .profileOut li i img{
+    width: 100%;
+    max-width: 100%;
+}
+
+.existingPayeeOut .header .profileOut li h5{
+    margin: .7rem 0 0 0;
+    font-weight: 600;
+    font-size: 24px;
+    float: left;
+}
+
+.existingPayeeOut .body{
+    background-color: #EAEAEA;
+    padding: 2rem;
+}
+
+/*
+============================== Transaction Styles ========================*/
+
+.transaction{
+    margin: 0;
+    padding: 0;
+}
+
+.transaction li{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.transaction li .transCard{
+    margin: 0;
+    padding: 0;    
+}
+.transaction li .transCard.right{
+    margin: 0;
+    padding: 0;
+    float: right;
+}
+.transaction li .transCard li{
+    margin: 0 0 1rem 0;
+    padding: .8rem 1.5rem;
+    list-style: none;
+    background: #fff;
+    border-radius: .3rem;
+}
+.transaction li .transCard li h6{
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+}
+.transaction li .transCard li .currency{
+    margin: .3rem 0;
+    padding: 0;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+.transaction li .transCard li .currency small{
+    margin: 0 0 0 8px;
+    padding: 0;
+    font-size: 24px;
+}
+.transaction li .transCard li .status{
+    margin: 0;
+    padding: 0;
+}
+.transaction li .transCard li .status p{
+    margin: 0;
+    padding: 0;
+    color: #707070;
+    font-size: 14px;
+}
+.transaction li .transCard li .status a{
+    margin: 0;
+    padding: 0;
+    color: #707070;
+    text-decoration: none;
+}
+.transaction li .transCard li .paymentFail{
+    margin: 0;
+    padding: 0;
+}
+.transaction li .transCard li .paymentFail p{
+    margin: 0;
+    padding: 0;
+    color: #707070;
+    font-size: 14px;
+}
+.transaction li .transCard li .paymentFail a{
+    margin: 0;
+    padding: 0;
+    color: #707070;
+    text-decoration: none;
+}
+
+
+/*
+============================== Paying Modal Styles ========================*/
+
+.payingOutModal{
+    margin: 0;
+    padding: 0;
+}
+.payingOutModal .modal-header .close{
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    font-size: 34px;
+}
+.payingOutModal .modal-header .close:hover{
+    opacity: 1;
+}
+.payingOutModal .modal-header, .payingOutModal .modal-footer{
+    border-top: none;
+    border-bottom: none;
+}
+.payingOutModal .modal-content{
+    padding: 2rem;
+}
+.payingOutModal .modal-body{
+    padding: 0;
+}
+.payingOutModal .profileOut{
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+.payingOutModal .profileOut li{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: inline-block;
+}
+.payingOutModal .profileOut li i{
+    margin: 0;
+    padding: 0;
+    width: 100px;
+    height: 100px;
+    display: block;
+    border-radius: 50%;
+    overflow: hidden;
+}
+.payingOutModal .profileOut li .icon{
+    margin: 0;
+    padding: 0;
+    width: auto;
+    height: 100px;
+    font-size: 32px;
+    color: #707070;
+    display: table-cell;
+    border-radius: 0;
+    vertical-align: middle;
+}
+.payingOutModal .profileOut li i img{
+    width: 100%;
+    max-width: 100%;
+}
+.payingOutModal .contents{
+    margin: 1.5rem 0;
+}
+.payingOutModal .contents p{
+    color: #707070;
+    font-size: 16px;
+    margin: .5rem 0 0 0;
+}
+.payingOutModal .contents .currency{
+    font-size: 42px;
+    font-weight: 600;
+    margin: .4rem 0;
+    color: #000;
+}
+.payingOutModal .contents input[type="text"]{
+    border-radius: .3rem;
+    padding: .6rem 0 .6rem .3rem;
+    border: 1px solid #DADADA;
+    width: 100%;
+    margin: 1rem 0;
+}
+.payingOutModal h3{
+    font-size: 24px;
+    color: #000;
+    margin: 0 0 1rem 0;
+    text-align: center;
+    font-weight: 600;
+}
+.payingOutModal .currencySmall{
+    font-size: 20px !important;
+    font-weight: 600 !important;
+    text-align: center;
+    color: #000 !important;
+    margin: 0;
+}
+.payingOutModal .currencySmall span{
+    font-size: 16px;	
+    color: #707070;
+    text-align: center;
+    display: block;
+    font-weight: normal !important;
+}
+.payingOutModal .transactionDetails{
+    margin:0;
+    padding: .7rem;
+    border-radius: 6px;
+    background-color: #E3E3E3;
+    width: 100%;
+    color: #000000;
+}
+
+.payingOutModal .transactionDetails .dateTime{
+    margin:0;
+    padding: 0;
+}
+.payingOutModal .transactionDetails .transId{
+    margin:0;
+    padding: 0;
+}
+.payingOutModal .transactionDetails .amount{
+    margin:0;
+    padding: 0;
+}
+
+/*
+============================== Wallet Topup Styles ========================*/
+
+.walletTopUpOut{
+    margin: 3rem 0 0 0;
+    padding: 0;
+}
+
+.walletTopUpOut h2{
+    margin: 0 0 0.7rem 0;
+    padding: 0;
+    font-size: 24px;
+    font-weight: 600;
+}
+.walletTopUpOut h2 small{
+    margin: 1rem 0 0.3rem 0;
+    padding: 0;
+    color: #707070;
+    font-size: 16px;
+    display: block;
+}
+.walletTopUpOut input[type="number"], .walletTopUpOut input[type="text"]{
+    margin: 0;
+    padding: 0.6rem 0 0.6rem .7rem;
+    width: 100%;
+    border-radius: .3rem;
+    border: 1px solid #DADADA;
+}
+.walletTopUpOut input[type="number"].innerSpace{
+    padding: 0.6rem 0 0.6rem 2.5rem;
+}
+.walletTopUpOut .icon{
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding: .3rem .6rem;
+    color: #707070;
+    font-size: 25px;
+}
+.walletTopUpOut .searchLists{
+    margin: 3rem 0 0 0;
+    padding: 0;
+}
+.walletTopUpOut .searchLists h5{
+    margin: 0 0 1rem 0;
+    padding: 0;
+    font-size: 18px;
+    font-weight: 600;
+}
+.walletTopUpOut .searchLists .peopleImg{
+    width: 70px;
+    height: 70px;
+    display: block;
+    overflow: hidden;
+    border-radius: 50%;
+    float: left;
+    margin: 0 1rem 0 0;
+}
+.walletTopUpOut .searchLists .peopleImg img{
+    width: 100%;
+    max-width: 100%;
+}
+.walletTopUpOut .searchLists h6{
+    height: 70px;
+    vertical-align: middle;
+    display: table-cell;
+    color: #707070;
+    font-weight: 600;
+}
+.walletTopUpOut .searchLists .number{
+    height: 70px;
+    vertical-align: middle;
+    display: table-cell;
+    color: #707070;
+}
+.walletTopUpOut ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    text-align: left;
+}
+.walletTopUpOut ::-moz-placeholder { /* Firefox 19+ */
+    text-align: left;
+}
+.walletTopUpOut :-ms-input-placeholder { /* IE 10+ */
+    text-align: left;
+}
+.walletTopUpOut :-moz-placeholder { /* Firefox 18- */
+    text-align: left;
+}
+
+
+/*
+============================== Card Detail Styles ========================*/
+
+.cardDetails{
+    margin: 0;
+    padding: 0;
+}
+.cardDetails li{
+    margin: 0 0 1rem 0;
+    list-style: none;
+    border: 1px solid #DADADA;
+    padding: 1.5rem;
+    border-radius: .3rem;
+}
+.cardDetails li h4{
+    margin: 0;
+    padding: 0;
+    color: #707070;
+    font-size: 20px;
+}
+.cardDetails li h4 small{
+    margin: 0;
+    padding: 0;
+    color: #707070;
+    font-size: 18px;
+    display: block;
+}
+.cardDetails li .cardType{
+    display: block;
+}
+.cardDetails li .cardType img{
+    width: 100%;
+    max-width: 100%;
+}
+
+
+/*
+============================== Radio Styles ========================*/
+
+.radio-button {
+    display: none;
+}
+.radio-button-click-target {
+    cursor: pointer;
+    display: inline-block;
+    font-size: 16px;
+    line-height: 1.5;
+    padding: 14px 14px 14px 32px;
+    position: relative;
+}
+.radio-button-click-target:hover .radio-button-circle:before, 
+.radio-button-click-target:focus .radio-button-circle:before {
+    border-color: #444;
+}
+.radio-button-click-target:active .radio-button-circle:before {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+}
+.radio-button-circle {
+    border-radius: 50%;
+    cursor: pointer;
+    display: block;
+    height: 8px;
+    left: 4px;
+    position: absolute;
+    top: 20px;
+    transition: background-color 0.1s ease-out;
+    vertical-align: middle;
+    width: 8px;
+}
+.radio-button-circle:before {
+    border: 3px solid #ccc;
+    border-radius: 50%;
+    content: "";
+    display: inline-block;
+    height: 20px;
+    position: absolute;
+    top: -6px;
+    transition: border-color 0.1s ease-out, -webkit-transform 0.1s ease-out;
+    transition: border-color 0.1s ease-out, transform 0.1s ease-out;
+    transition: border-color 0.1s ease-out, transform 0.1s ease-out, -webkit-transform 0.1s ease-out;
+    left: -6px;
+    width: 20px;
+}
+.radio-button:checked + .radio-button-click-target .radio-button-circle {
+    background-color: #444;
+}
+.radio-button:disabled + .radio-button-click-target {
+    cursor: not-allowed;
+}
+.radio-button:disabled + .radio-button-click-target .radio-button-circle:before {
+    border-color: #e2e2e2;
+}
+.radio-button:disabled + .radio-button-click-target:active .radio-button-circle:before {
+    -webkit-transform: none;
+    transform: none;
+}
+
+
+
+/*
+============================== History Styles ========================*/
+
+.historyOut{
+    margin: 3rem 0 0 0;
+    padding: 0;
+}
+.historyOut .header{
+    margin: 0 0 1rem 0;
+}
+.historyOut .header h2{
+    margin: .6rem 0 0 0;
+    padding: 0;
+    font-size: 24px;
+    font-weight: 600;
+}
+.historyOut .icon{
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding: .3rem .6rem;
+    color: #707070;
+    font-size: 25px;
+}
+.historyOut input[type="number"], .historyOut input[type="text"]{
+    margin: 0;
+    padding: 0.6rem 0 0.6rem .7rem;
+    width: 100%;
+    border-radius: .3rem;
+    border: 1px solid #DADADA;
+}
+.historyOut input[type="number"].innerSpace{
+    padding: 0.6rem 0 0.6rem 2.5rem;
+}
+.historyOut ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    text-align: left;
+}
+.historyOut ::-moz-placeholder { /* Firefox 19+ */
+    text-align: left;
+}
+.historyOut :-ms-input-placeholder { /* IE 10+ */
+    text-align: left;
+}
+.historyOut :-moz-placeholder { /* Firefox 18- */
+    text-align: left;
+}
+.historyOut .dropdown .dropdownBtn{
+    color: #fff;
+    background-color: #9B9B9B;
+}
+.historyOut .dropdown-toggle::after{
+    display: none;
+}
+.historyOut .dropdown-menu{
+    min-width: 25rem;
+    left: auto !important;
+    right: -32px;
+    padding: 1.5rem;
+    background-color: #F4F4F4;
+}
+.historyOut .dropdown-menu h5{
+    font-size: 16px;
+    font-weight: 600;
+}
+.historyOut .dropdown-menu .icon{
+    position: absolute;
+    right: 0;
+    left: auto;
+    font-size: 25px;
+    top: -5px;
+    padding: .4rem; 
+}
+
+
+.tabsOut{
+    margin: 3rem 0 0 0;
+}
+.tabsOut .nav-tabs {
+    border-bottom: 2px solid #dee2e6;
+}
+.tabsOut .nav-tabs .nav-item.show .nav-link, .tabsOut .nav-tabs .nav-link.active {
+    color: #707070;
+    font-weight: 600;
+    background-color: #fff;
+    border-color:transparent;
+}
+.tabsOut .nav-tabs .nav-link:focus, .tabsOut .nav-tabs .nav-link:hover {
+    border-color: transparent
+}
+.tabsOut .nav-tabs .nav-item {
+    margin-bottom: 0;
+}
+.tabsOut .nav-link{
+    padding: 0 6rem 0 0;
+    font-size: 18px;
+    color: #707070;
+}
+.tabsOut .tab-content{
+    padding: 2rem;
+}
+.tabsOut .tab-content .transDetails{
+    background-color: #D8D8D8;
+    border: 1px solid #979797;
+    padding: 1rem 2rem;
+}
+.tabsOut .tab-content .transDetails strong{
+    font-size: 26px;
+}
+.tabsOut .tab-content .transDetails span{
+    color: #707070;
+    font-size: 16px;
+    margin: 0 0 0 1rem;
+}
+.tabsOut .tab-content .transLists{
+    margin: 2rem 0 0 0;
+    padding: 0;
+}
+.tabsOut .tab-content .transLists li{
+    margin: 0;
+    padding: 1rem 0;
+    list-style: none;
+    border-bottom: 1px solid #dddddd;
+}
+.tabsOut .tab-content .transLists li .profileDetailsOut{
+    margin: 0;
+    padding: 0;
+}
+.tabsOut .tab-content .transLists li .profileDetailsOut i{
+    margin: 0 1rem 0 0;
+    padding: 0;
+    width: 70px;
+    height: 70px;
+    display: block;
+    overflow: hidden;
+    border-radius: 50%;
+    float: left;
+}
+.tabsOut .tab-content .transLists li .profileDetailsOut i img{
+    width: 100%;
+    max-width: 100%;
+}
+.tabsOut .tab-content .transLists li .profileDetailsOut h5{
+    margin: 0;
+    padding: 0;
+    height: 70px;
+    font-size: 16px;
+    display: table-cell;
+    vertical-align: middle;
+    color: #707070;
+    font-weight: 600;
+}
+.tabsOut .tab-content .transLists li .profileDetailsOut h5 small{
+    display: block;
+    font-size: 14px;
+    color: #707070;
+}
+.tabsOut .tab-content .transLists li .amountDetails{
+    margin: 0;
+    padding: 0;
+}
+.tabsOut .tab-content .transLists li .amountDetails p{
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+    color: #707070;
+}
+
+
+
+/*
+============================== Media Query Styles ========================*/
+
+@media (min-width: 576px){
+    .payingOutModal .modal-dialog {
+        max-width: 450px;
+    }
 }
