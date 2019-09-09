@@ -2,7 +2,7 @@ import React from 'react';
 import TextInput from '../../components/TextInput';
 import Button from '../../components/Button';
 import Header from '../../components/Header';
-import FormValidator from '../../validator/FormValidator';
+import FormValidator from '../../validator/formvalidator';
 
 class VerifyPin extends React.Component {
   constructor() {
@@ -54,6 +54,7 @@ class VerifyPin extends React.Component {
   }
 
   render() {
+    console.log(this.props.match.params.id);
     const validation = this.submitted
       ? this.validator.validate(this.state)
       : this.state.validation;

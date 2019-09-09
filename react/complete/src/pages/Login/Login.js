@@ -1,5 +1,5 @@
 import React from 'react';
-import FormValidator from '../../validator/FormValidator';
+import FormValidator from '../../validator/formvalidator';
 import PropTypes from 'prop-types';
 import styles from './Login.module.css';
 

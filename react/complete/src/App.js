@@ -17,10 +17,10 @@ function App() {
       <div className="container">
         <Route exact path="/" component={Login} />
         <Route path="/register" component={Register} />
-        <Route path="/verifypin" component={VerifyPin} />
+        <Route path="/verifypin/:id" component={VerifyPin} />
         <Route path="/home" component={Home} />
-        <Route path="/loginpin" component={SetLoginPin} />
-        <Route path="/transactionpin" component={SetTransactionPin} />
+        <Route path="/loginpin/:id" component={SetLoginPin} />
+        <Route path="/transactionpin/:id" component={SetTransactionPin} />
       </div>
     </Router>
   );

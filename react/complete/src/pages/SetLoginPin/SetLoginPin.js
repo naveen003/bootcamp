@@ -2,7 +2,7 @@ import React from 'react';
 import TextInput from '../../components/TextInput';
 import Button from '../../components/Button';
 import Header from '../../components/Header';
-import FormValidator from '../../validator/FormValidator';
+import FormValidator from '../../validator/formvalidator';
 
 class SetLoginPin extends React.Component {
   constructor() {

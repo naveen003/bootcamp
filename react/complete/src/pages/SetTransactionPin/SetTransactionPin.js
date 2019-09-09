@@ -4,7 +4,7 @@ import Button from '../../components/Button';
 import Header from '../../components/Header';
 import PropTypes from 'prop-types';
 import styles from './SetTransactionPin.module.css';
-import FormValidator from '../../validator/FormValidator';
+import FormValidator from '../../validator/formvalidator';
 
 class SetTransactionPin extends React.Component {
   constructor() {
