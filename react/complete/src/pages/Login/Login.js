@@ -1,7 +1,8 @@
 import React from 'react';
-import FormValidator from '../../validator/formvalidator';
 import PropTypes from 'prop-types';
 import styles from './Login.module.css';
+
+import FormValidator from '../../validator/FormValidator';
 
 import TextInput from '../../components/TextInput';
 
@@ -61,7 +62,7 @@ class Login extends React.Component {
   navigateToHome(validation) {
     if (validation.isValid) {
       if (this.props.history !== undefined) {
-        this.props.history.push("/home");
+        this.props.history.push('/home');
       }
     }
   }
@@ -76,7 +77,7 @@ class Login extends React.Component {
 
   handleSignupClick() {
     if (this.props.history !== undefined) {
-      this.props.history.push("/register");
+      this.props.history.push('/register');
     }
   }
 
@@ -140,6 +141,8 @@ class Login extends React.Component {
 
 // Login.defaultProps = {};
 
-// Login.propTypes = {};
+Login.propTypes = {
+  history: PropTypes.object,
+};
 
 export default Login;

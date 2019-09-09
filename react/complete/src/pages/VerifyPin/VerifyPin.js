@@ -1,8 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import TextInput from '../../components/TextInput';
 import Button from '../../components/Button';
 import Header from '../../components/Header';
-import FormValidator from '../../validator/formvalidator';
+
+import FormValidator from '../../validator/FormValidator';
 
 class VerifyPin extends React.Component {
   constructor() {
@@ -54,7 +57,9 @@ class VerifyPin extends React.Component {
   }
 
   render() {
-    console.log(this.props.match.params.id);
+    if (this.props.match) {
+      console.log(this.props.match.params.id);
+    }
     const validation = this.submitted
       ? this.validator.validate(this.state)
       : this.state.validation;
@@ -98,4 +103,10 @@ class VerifyPin extends React.Component {
     );
   }
 }
+
+VerifyPin.propTypes = {
+  history: PropTypes.object,
+  match: PropTypes.object,
+};
+
 export default VerifyPin;

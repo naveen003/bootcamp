@@ -1,8 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import TextInput from '../../components/TextInput';
 import Button from '../../components/Button';
 import Header from '../../components/Header';
-import FormValidator from '../../validator/formvalidator';
+
+import FormValidator from '../../validator/FormValidator';
 
 class SetLoginPin extends React.Component {
   constructor() {
@@ -123,4 +126,9 @@ class SetLoginPin extends React.Component {
     );
   }
 }
+
+SetLoginPin.propTypes = {
+  history: PropTypes.object,
+};
+
 export default SetLoginPin;

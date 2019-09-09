@@ -1,10 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import styles from './SetTransactionPin.module.css';
+
 import TextInput from '../../components/TextInput';
 import Button from '../../components/Button';
 import Header from '../../components/Header';
-import PropTypes from 'prop-types';
-import styles from './SetTransactionPin.module.css';
-import FormValidator from '../../validator/formvalidator';
+
+import FormValidator from '../../validator/FormValidator';
 
 class SetTransactionPin extends React.Component {
   constructor() {
@@ -124,5 +126,9 @@ class SetTransactionPin extends React.Component {
     );
   }
 }
+
+SetTransactionPin.propTypes = {
+  history: PropTypes.object,
+};
 
 export default SetTransactionPin;

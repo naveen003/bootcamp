@@ -1,10 +1,11 @@
 import React from 'react';
-import FormValidator from '../../validator/FormValidator';
 import PropTypes from 'prop-types';
-import singleton from '../../services/registerApi';
 import styles from './Register.module.css';
 
 import TextInput from '../../components/TextInput';
+
+import FormValidator from '../../validator/FormValidator';
+import singleton from '../../services/registerApi';
 
 class Register extends React.Component {
   constructor(props) {
@@ -69,7 +70,6 @@ class Register extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     // this.handleMultiSelect = this.handleMultiSelect.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.registerAsync = this.registerAsync.bind(this);
   }
 
   handleChange(event) {
@@ -95,11 +95,11 @@ class Register extends React.Component {
         }
       }
       this.setState({ [name]: newstr }, () => {
-        console.log(this.state[name]);
+        // console.log(this.state[name]);
       });
     } else {
       this.setState({ [name]: value }, () => {
-        console.log(this.state[name]);
+        // console.log(this.state[name]);
       });
     }
   }
@@ -110,46 +110,28 @@ class Register extends React.Component {
   //   });
   // }
 
-  async registerAsync (dataobj) {
-    try {
-    // await response of fetch call
-      let response = await fetch("http://localhost:4000/users/register", {
-        method: 'POST', // or 'PUT'
-        body: JSON.stringify(dataobj), // data can be `string` or {object}!
-        headers:{
-          'Content-Type': 'application/json'
-        }
-      });
-      // only proceed once promise is resolved
-      let data = await response.json();
-      // only proceed once second promise is resolved
-      return data;  
-    } catch (error) {
-      
-    }
-    return null;
-  }
-
   async navigateOnRegister(validation) {
     if (validation.isValid) {
+      const testData = this.state.mobile;
+      const replacedmobile = testData
+        .replace('(', '')
+        .replace(')', '')
+        .replace('-', '');
+      const dataobj = {
+        firstName: this.state.firstname,
+        lastName: this.state.lastname,
+        dob: this.state.dob,
+        email: this.state.email,
+        mobile: replacedmobile,
+      };
       if (this.props.history !== undefined) {
-        let testData = this.state.mobile;
-        let replacedmobile = testData.replace("(","").replace(")","").replace("-","");
-        var dataobj = {
-          firstName: this.state.firstname,
-          lastName: this.state.lastname,
-          dob: this.state.dob,
-          email: this.state.email,
-          mobile: replacedmobile,
-        };
-        var response = await singleton.registerAsync(dataobj);
-        if(response !== null){
-          this.props.history.push('/verifypin/' + response.hash);
+        const response = await singleton.registerAsync(dataobj);
+        if (response !== null) {
+          this.props.history.push(`/verifypin/${response.hash}`);
         }
       }
     }
   }
-  
 
   handleSubmit(event) {
     event.preventDefault();
@@ -265,6 +247,8 @@ class Register extends React.Component {
 
 // Register.defaultProps = {};
 
-// Register.propTypes = {};
+Register.propTypes = {
+  history: PropTypes.object,
+};
 
 export default Register;
