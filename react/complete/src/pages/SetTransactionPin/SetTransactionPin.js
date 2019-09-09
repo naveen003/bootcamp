@@ -4,27 +4,47 @@ import Button from '../../components/Button';
 import Header from '../../components/Header';
 import PropTypes from 'prop-types';
 import styles from './SetTransactionPin.module.css';
-
-// const SetTransactionPin = props => {
-//   return (
-//     <div className={styles.root}></div>
-//   );
-// };
-
-// SetTransactionPin.defaultProps = {};
-
-// SetTransactionPin.propTypes = {};
+import FormValidator from '../../validator/formvalidator';
 
 class  SetTransactionPin extends React.Component{
   constructor(){
     super();
+    this.validator = new FormValidator([
+      {
+        field: 'pin',
+        method: 'isEmpty',
+        validWhen: false,
+        message: 'pin is required.',
+      },
+      {
+        field: 'confirmpin',
+        method: 'isEmpty',
+        validWhen: false,
+        message: 'confimation pin is required.',
+      },
+      { 
+        field: 'confirmpin', 
+        method: this.pinMatch,   // notice that we are passing a custom function here
+        validWhen: true, 
+        message: 'pin and confirmation pin do not match.'
+      }
+    ]);
     this.state = {
       pin:"",
-      confirmpin:""
+      confirmpin:"",
+      validation: this.validator.valid(),
     };
+    this.submitted = false;
     this.buttonClick = this.buttonClick.bind(this);
     this.textChanged = this.textChanged.bind(this);
+    this.navigateOnSuccess = this.navigateOnSuccess.bind(this);
   }
+  navigateOnSuccess(validation) {
+    if (validation.isValid) {
+      alert("Faeture Under Devlopement")
+    }
+  }
+  pinMatch = (confirmation, state) => (state.pin === confirmation)
   textChanged(event){
     if(event !== null && event.target !== null && event.target !== undefined){
       this.setState({
@@ -35,11 +55,18 @@ class  SetTransactionPin extends React.Component{
   buttonClick(event){
     if(event !== null && event.target !== null && event.target !== undefined){
       if(event.target.name === "verifypin"){
-        alert("Feature Under Development");
+        event.preventDefault();
+        this.submitted = true;
+        const isFormValid = this.validator.validate(this.state);
+        this.setState({ validation: isFormValid });
+        this.navigateOnSuccess(isFormValid);
       }
     }
   }
   render(){
+    const validation = this.submitted
+      ? this.validator.validate(this.state)
+      : this.state.validation;
     return(
       <div className="container">
         <div className="row">
@@ -60,6 +87,8 @@ class  SetTransactionPin extends React.Component{
                           placeholder="Set Pin"
                           value={this.state.pin}
                           handleChange={this.textChanged}
+                          haserror={validation.pin.isInvalid}
+                          errormessage={validation.pin.message}
                       />
                     </div>
                     <div className="form-group">
@@ -71,6 +100,8 @@ class  SetTransactionPin extends React.Component{
                           placeholder="Re-enter Pin"
                           value={this.state.confirmpin}
                           handleChange={this.textChanged}
+                          haserror={validation.confirmpin.isInvalid}
+                          errormessage={validation.confirmpin.message}
                       />
                     </div>
                     <div className="row">
@@ -78,7 +109,8 @@ class  SetTransactionPin extends React.Component{
                         <Button
                             name="verifypin"
                             type="button"
-                            onClick={this.buttonClick}>Make me an account</Button>
+                            text="Make me an account"
+                            onClick={this.buttonClick}/>
                         </div>
                     </div>
                 </div>

@@ -62,7 +62,7 @@ class VerifyPin extends React.Component{
                   value="Verification"
                   inputtype="h4"/>
                   <Header
-                  value="Please enter the OTP send to your registered emial/mobile number."
+                  value="Please enter the OTP send to your registered email/mobile number."
                   inputtype="p"/>
                     <div className="form-group">
                       <TextInput
