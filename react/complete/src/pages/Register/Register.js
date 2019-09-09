@@ -1,5 +1,5 @@
 import React from 'react';
-import FormValidator from '../../validator/formvalidator';
+import FormValidator from '../../validator/FormValidator';
 import PropTypes from 'prop-types';
 import styles from './Register.module.css';
 

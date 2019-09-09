@@ -1,4 +1,5 @@
 import React from 'react';
+import { mount, shallow } from 'enzyme';
 import SetLoginPin from './SetLoginPin';
 
 describe('SetLoginPin', () => {
@@ -7,13 +8,13 @@ describe('SetLoginPin', () => {
   test('setloginpin check', () => {
     wrapper = mount(<SetLoginPin />); // mount/render/shallow when applicable
     wrapper.find('input[name="pin"]').simulate('change', {
-      target: { name: 'pin', value: 'pin' },
+      target: { name: 'pin', value: '1234' },
     });
-    expect(wrapper.state('verifypin')).toEqual('pin');
+    expect(wrapper.state('pin')).toEqual('1234');
     wrapper.find('input[name="confirmpin"]').simulate('change', {
-      target: { name: 'confirmpin', value: 'confirmpin' },
+      target: { name: 'confirmpin', value: '1234' },
     });
-    expect(wrapper.state('confirmpin')).toEqual('confirmpin');
+    expect(wrapper.state('confirmpin')).toEqual('1234');
   });
   it('loginpin check with right data', () => {
     wrapper = mount(<SetLoginPin />);
@@ -23,7 +24,7 @@ describe('SetLoginPin', () => {
     wrapper.find('input[name="confirmpin"]').simulate('change', {
       target: { name: 'confirmpin', value: '12345' },
     });
-    wrapper.find('input[name="verifypin"]').simulate('click');
+    wrapper.find('button[name="verifypin"]').simulate('click');
     expect(wrapper.state('validation').isValid).toBe(true);
   });
 
@@ -35,7 +36,7 @@ describe('SetLoginPin', () => {
     wrapper.find('input[name="confirmpin"]').simulate('change', {
       target: { name: 'confirmpin', value: '123456' },
     });
-    wrapper.find('input[name="verifypin"]').simulate('click');
+    wrapper.find('button[name="verifypin"]').simulate('click');
     expect(wrapper.state('validation').isValid).toBe(false);
   });
 });
