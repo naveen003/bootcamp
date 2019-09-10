@@ -5,7 +5,7 @@ import styles from './SetTransactionPin.module.css';
 import TextInput from '../../components/TextInput';
 import Button from '../../components/Button';
 import Header from '../../components/Header';
-
+import singleton from '../../services/setpinApi';
 import FormValidator from '../../validator/FormValidator';
 
 class SetTransactionPin extends React.Component {
@@ -42,10 +42,22 @@ class SetTransactionPin extends React.Component {
     this.navigateOnSuccess = this.navigateOnSuccess.bind(this);
   }
 
-  navigateOnSuccess(validation) {
+  async navigateOnSuccess(validation) {
     if (validation.isValid) {
       if (this.props.history !== undefined) {
-        alert('Faeture Under Devlopement');
+        const dataObj = {
+          pin:this.state.pin,
+          hash:this.props.match.params.id
+        };
+        const response = await singleton.setpinAsync(dataObj,true);
+        console.log("Api Called....");
+        if(response !== null){
+          if(response.message !== null && response.message !== undefined && response.message.length > 0){
+            alert(response.message);
+          }else{
+            alert("Account as been Created....");
+          }
+        }
       }
     }
   }
@@ -60,14 +72,16 @@ class SetTransactionPin extends React.Component {
     }
   }
 
-  buttonClick(event) {
+  async buttonClick(event) {
     if (event !== null && event.target !== null && event.target !== undefined) {
       if (event.target.name === 'verifypin') {
         event.preventDefault();
         this.submitted = true;
         const isFormValid = this.validator.validate(this.state);
         this.setState({ validation: isFormValid });
-        this.navigateOnSuccess(isFormValid);
+        console.log("Before....");
+        await this.navigateOnSuccess(isFormValid);
+        console.log("After....");
       }
     }
   }

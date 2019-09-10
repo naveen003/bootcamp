@@ -39,7 +39,7 @@ class VerifyPin extends React.Component {
   navigateOnVerification(validation) {
     if (validation.isValid) {
       if (this.props.history !== undefined) {
-        this.props.history.push('/loginpin');
+        this.props.history.push('/loginpin/' + this.props.match.params.id);
       }
     }
   }
@@ -57,9 +57,6 @@ class VerifyPin extends React.Component {
   }
 
   render() {
-    if (this.props.match) {
-      console.log(this.props.match.params.id);
-    }
     const validation = this.submitted
       ? this.validator.validate(this.state)
       : this.state.validation;

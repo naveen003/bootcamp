@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styles from './Login.module.css';
 
 import FormValidator from '../../validator/FormValidator';
-
+import singleton from '../../services/authenticateApi';
 import TextInput from '../../components/TextInput';
 
 class Login extends React.Component {
@@ -59,20 +59,31 @@ class Login extends React.Component {
     });
   }
 
-  navigateToHome(validation) {
+  async navigateToHome(validation) {
     if (validation.isValid) {
       if (this.props.history !== undefined) {
-        this.props.history.push('/home');
+        const userObj = {
+          email:this.state.email,
+          pin:this.state.code
+        };
+        var response = await singleton.authenticateUser(userObj);
+        if(response !== null && response !== undefined){
+          if(response.message !== null && response.message !== undefined){
+            alert(response.message);
+          }else{
+            this.props.history.push('/home');
+          }
+        }
       }
     }
   }
 
-  handleSubmit(event) {
+  async handleSubmit(event) {
     event.preventDefault();
     this.submitted = true;
     const isFormValid = this.validator.validate(this.state);
     this.setState({ validation: isFormValid });
-    this.navigateToHome(isFormValid);
+    await this.navigateToHome(isFormValid);
   }
 
   handleSignupClick() {

@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import TextInput from '../../components/TextInput';
 import Button from '../../components/Button';
 import Header from '../../components/Header';
+import singleton from '../../services/setpinApi';
 
 import FormValidator from '../../validator/FormValidator';
 
@@ -51,22 +52,33 @@ class SetLoginPin extends React.Component {
     }
   }
 
-  navigateOnTransactionPin(validation) {
+  async navigateOnTransactionPin(validation) {
     if (validation.isValid) {
       if (this.props.history !== undefined) {
-        this.props.history.push('/transactionpin');
+        const dataObj = {
+          pin:this.state.pin,
+          hash:this.props.match.params.id
+        };
+        const response = await singleton.setpinAsync(dataObj,true);
+        if(response !== null){
+          if(response.message !== null && response.message !== undefined && response.message.length > 0){
+            alert(response.message);
+          }else{
+            this.props.history.push('/transactionpin/' + this.props.match.params.id);
+          }
+        }
       }
     }
   }
 
-  buttonClick(event) {
+  async buttonClick(event) {
     if (event !== null && event.target !== null && event.target !== undefined) {
       if (event.target.name === 'verifypin') {
         event.preventDefault();
         this.submitted = true;
         const isFormValid = this.validator.validate(this.state);
         this.setState({ validation: isFormValid });
-        this.navigateOnTransactionPin(isFormValid);
+        await this.navigateOnTransactionPin(isFormValid);
       }
     }
   }
