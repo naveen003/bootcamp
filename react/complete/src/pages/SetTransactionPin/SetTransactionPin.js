@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './SetTransactionPin.module.css';
+// import styles from './SetTransactionPin.module.css';
 
 import TextInput from '../../components/TextInput';
 import Button from '../../components/Button';
@@ -46,16 +46,20 @@ class SetTransactionPin extends React.Component {
     if (validation.isValid) {
       if (this.props.history !== undefined) {
         const dataObj = {
-          pin:this.state.pin,
-          hash:this.props.match.params.id
+          pin: this.state.pin,
+          hash: this.props.match.params.id,
         };
-        const response = await singleton.setpinAsync(dataObj,true);
-        console.log("Api Called....");
-        if(response !== null){
-          if(response.message !== null && response.message !== undefined && response.message.length > 0){
+        const response = await singleton.setpinAsync(dataObj, true);
+        // console.log('Api Called....');
+        if (response !== null) {
+          if (
+            response.message !== null &&
+            response.message !== undefined &&
+            response.message.length > 0
+          ) {
             alert(response.message);
-          }else{
-            alert("Account as been Created....");
+          } else {
+            alert('Account as been Created....');
           }
         }
       }
@@ -79,9 +83,9 @@ class SetTransactionPin extends React.Component {
         this.submitted = true;
         const isFormValid = this.validator.validate(this.state);
         this.setState({ validation: isFormValid });
-        console.log("Before....");
+        // console.log('Before....');
         await this.navigateOnSuccess(isFormValid);
-        console.log("After....");
+        // console.log('After....');
       }
     }
   }
@@ -97,32 +101,28 @@ class SetTransactionPin extends React.Component {
             <div className="loginOut">
               <Header value="Last step." inputtype="h4" />
               <Header value="Set your transaction pin" inputtype="p" />
-              <div className="form-group">
-                <TextInput
-                  className="form-control"
-                  type="number"
-                  name="pin"
-                  id="pin"
-                  placeholder="Set Pin"
-                  value={this.state.pin}
-                  handleChange={this.textChanged}
-                  haserror={validation.pin.isInvalid}
-                  errormessage={validation.pin.message}
-                />
-              </div>
-              <div className="form-group">
-                <TextInput
-                  className="form-control"
-                  type="number"
-                  name="confirmpin"
-                  id="confirmpin"
-                  placeholder="Re-enter Pin"
-                  value={this.state.confirmpin}
-                  handleChange={this.textChanged}
-                  haserror={validation.confirmpin.isInvalid}
-                  errormessage={validation.confirmpin.message}
-                />
-              </div>
+              <TextInput
+                className="form-control"
+                type="number"
+                name="pin"
+                id="pin"
+                placeholder="Set Pin"
+                value={this.state.pin}
+                handleChange={this.textChanged}
+                haserror={validation.pin.isInvalid}
+                errormessage={validation.pin.message}
+              />
+              <TextInput
+                className="form-control"
+                type="number"
+                name="confirmpin"
+                id="confirmpin"
+                placeholder="Re-enter Pin"
+                value={this.state.confirmpin}
+                handleChange={this.textChanged}
+                haserror={validation.confirmpin.isInvalid}
+                errormessage={validation.confirmpin.message}
+              />
               <div className="row">
                 <div className="offset-md-3 col-md-6 text-center">
                   <Button
@@ -143,6 +143,7 @@ class SetTransactionPin extends React.Component {
 
 SetTransactionPin.propTypes = {
   history: PropTypes.object,
+  match: PropTypes.object,
 };
 
 export default SetTransactionPin;

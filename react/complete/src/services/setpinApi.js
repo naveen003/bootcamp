@@ -1,7 +1,9 @@
 const createSetpinApi = () => ({
-  async setpinAsync(pinObj,isloginPin) {
+  async setpinAsync(pinObj, isloginPin) {
     try {
-      const url = isloginPin ? 'http://localhost:4000/users/setloginpin' : 'http://localhost:4000/users/settransactionpin';
+      const url = isloginPin
+        ? 'http://localhost:4000/users/setloginpin'
+        : 'http://localhost:4000/users/settransactionpin';
       // await response of fetch call
       const response = await fetch(url, {
         method: 'POST', // or 'PUT'
@@ -24,5 +26,3 @@ const singleton = createSetpinApi();
 Object.freeze(singleton);
 
 export default singleton;
-
-

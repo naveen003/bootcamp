@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './TextInput.module.css';
+// import styles from './TextInput.module.css';
 
 const TextInput = props => (
   <div className="form-group">
@@ -14,7 +14,11 @@ const TextInput = props => (
       className={props.className}
       placeholder={props.placeholder}
     />
-    {props.haserror && <span className={props.haserror ? "help-block" : ""}>{props.errormessage}</span>}
+    {props.haserror && (
+      <span className={props.haserror ? 'help-block' : ''}>
+        {props.errormessage}
+      </span>
+    )}
   </div>
 );
 
@@ -23,14 +27,14 @@ TextInput.defaultProps = {
   labelFor: 'text input',
   showLabel: false,
   value: 'Hello Text Input',
-  handleChange: function() {},
+  handleChange() {},
   id: 'input',
   name: 'input',
   type: 'input',
   className: 'form-control',
   placeholder: '',
-  haserror:false,
-  errormessage:''
+  haserror: false,
+  errormessage: '',
 };
 
 TextInput.propTypes = {
@@ -44,8 +48,8 @@ TextInput.propTypes = {
   type: PropTypes.string,
   className: PropTypes.string,
   placeholder: PropTypes.string,
-  haserror:PropTypes.bool,
-  errormessage:PropTypes.string,
+  haserror: PropTypes.bool,
+  errormessage: PropTypes.string,
 };
 
 export default TextInput;

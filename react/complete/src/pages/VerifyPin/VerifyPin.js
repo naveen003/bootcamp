@@ -39,7 +39,7 @@ class VerifyPin extends React.Component {
   navigateOnVerification(validation) {
     if (validation.isValid) {
       if (this.props.history !== undefined) {
-        this.props.history.push('/loginpin/' + this.props.match.params.id);
+        this.props.history.push(`/loginpin/${this.props.match.params.id}`);
       }
     }
   }

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './Login.module.css';
+// import styles from './Login.module.css';
 
 import FormValidator from '../../validator/FormValidator';
 import singleton from '../../services/authenticateApi';
@@ -63,14 +63,14 @@ class Login extends React.Component {
     if (validation.isValid) {
       if (this.props.history !== undefined) {
         const userObj = {
-          email:this.state.email,
-          pin:this.state.code
+          email: this.state.email,
+          pin: this.state.code,
         };
-        var response = await singleton.authenticateUser(userObj);
-        if(response !== null && response !== undefined){
-          if(response.message !== null && response.message !== undefined){
+        const response = await singleton.authenticateUser(userObj);
+        if (response !== null && response !== undefined) {
+          if (response.message !== null && response.message !== undefined) {
             alert(response.message);
-          }else{
+          } else {
             this.props.history.push('/home');
           }
         }

@@ -5,7 +5,7 @@ import registerApi from './registerApi';
 
 export {
   /* PLOP_INJECT_EXPORT */
-	authenticateApi,
-	setpinApi,
-	registerApi,
-}
+  authenticateApi,
+  setpinApi,
+  registerApi,
+};
