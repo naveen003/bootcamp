@@ -11,6 +11,7 @@ const UserSchema = new Schema({
     lastName: { type: String, required: true },
     dob: { type: Date, required: true },
     mobile: { type: Number, required: true },
+    otp: { type: Number }
     loginPin: { type: Number },
     transactionPin: { type: Number },
     createdDate: { type: Date, default: Date.now },
