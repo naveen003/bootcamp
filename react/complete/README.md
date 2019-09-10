@@ -1,3 +1,5 @@
+## ewallet
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
@@ -27,7 +29,7 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+<!--### `npm run eject`
 
 **Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
@@ -39,7 +41,7 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 
 ## Commandline to generate page, component, hook, service
 ![plop-demo-all](https://user-images.githubusercontent.com/5760059/55975017-a2cc1900-5c4e-11e9-961b-4bd7cdae74da.gif)
-
+-->
 
 ## API
 ```bash
@@ -64,6 +66,7 @@ npm run generate service <name>
 npm run generate service balanceApi
 ```
 
+<!--
 ## Learn More
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
@@ -93,3 +96,4 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `npm run build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+-->
