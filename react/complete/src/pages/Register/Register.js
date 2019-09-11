@@ -146,6 +146,7 @@ class Register extends React.Component {
       ? this.validator.validate(this.state)
       : this.state.validation;
     return (
+    <div className="container">
       <div className="row">
         <div className="offset-md-1 col-md-10">
           <div className="loginOut">
@@ -240,6 +241,7 @@ class Register extends React.Component {
             </form>
           </div>
         </div>
+      </div>
       </div>
     );
   }

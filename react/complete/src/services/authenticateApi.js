@@ -17,6 +17,21 @@ const createAuthenticateApi = () => ({
       return null;
     }
   },
+  async getAllUsers() {
+    try {
+      const response = await fetch('http://localhost:4000/users', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': "Bearer "+ sessionStorage.token,
+        },
+      });
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      return null;
+    }
+  },
 });
 
 const singleton = createAuthenticateApi();

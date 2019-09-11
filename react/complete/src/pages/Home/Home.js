@@ -2,41 +2,69 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './Home.module.css';
 import Avatar from '../../components/Avatar';
+import singleton from '../../services/authenticateApi';
 
 class Home extends React.Component {
+  constructor(){
+    super();
+    this.state={
+      users:[],
+      loginedUser:{}
+    }
+  }
+  async componentDidMount() {
+    var response = await singleton.getAllUsers();
+    if(response !== null){
+      let loggedinUser = {};
+      let remainingData = [];
+      remainingData.push({firstName:"Pay", _id:"0"});
+      response.map((item)=>{
+          if(item._id === sessionStorage.userid){
+            loggedinUser = item;
+          }else{
+            remainingData.push(item);
+          }
+      });
+      this.setState({'users' : remainingData,'loginedUser':loggedinUser});
+    }
+  }
+
   render() {
+    let name = this.state.loggedinUser!== null && this.state.loginedUser !== undefined ? this.state.loginedUser.firstName + " " + this.state.loginedUser.lastName : "";
+    let firstChar = name !== null && name !== undefined && name.length > 0 ? name[0] : "";
     return (
       <div className="container-fluid">
         <div className="row">
           <div className="col-md-4">
-            <div className="dashboardLeftContent">
+            <div className={styles.dashboardLeftContent}>
               <Avatar
-                className="top"
+                className={styles.top + " " +  styles.userAvatar}
                 avatarUrl="https://statics.sportskeeda.com/wp-content/uploads/2014/11/completini_21_672-458_resize-1416579848.jpg"
-                avatarText="Hello John"
+                avatarText={firstChar}
+                avatarName={name}
                 inputtype="h3"
               />
-              <div className="middle">
+              <div className={styles.middle}>
                 <h1>
                   0 <small>available balance</small>
                 </h1>
               </div>
-              <div className="bottom">
+              <div className={styles.bottom}>
                 <div className="row">
-                  <div className="col-md-4">
-                    <div className="circleOut">
+                  <div className="col-4">
+                    <div className={styles.circleOut}>
                       <i></i>
                       <h6>Top-up</h6>
                     </div>
                   </div>
-                  <div className="col-md-4">
-                    <div className="circleOut">
+                  <div className="col-4">
+                    <div className={styles.circleOut}>
                       <i></i>
                       <h6>Add Payee</h6>
                     </div>
                   </div>
-                  <div className="col-md-4">
-                    <div className="circleOut">
+                  <div className="col-4">
+                    <div className={styles.circleOut}>
                       <i></i>
                       <h6>History</h6>
                     </div>
@@ -46,168 +74,24 @@ class Home extends React.Component {
             </div>
           </div>
           <div className="col-md-8 darker-grey">
-            <div className="dashboardRightContent">
+            <div className={styles.dashboardRightContent}>
               <h4>Recent Transactions</h4>
-              <div className="row">
-                <div className="col-md-3">
-                  <div className="circleOut">
-                    <i className="mdi mdi-credit-card-outline icons"></i>
-                    <h6>Pay</h6>
-                  </div>
+                  <div className="row">
+                {this.state.users.map((user,index) => (
+                  <div className={styles.circleOut  + " col-3 " + styles.cussorpointer}>
+                  <Avatar
+                    className={styles.top}
+                    avatarText={(user.firstName + " " + (index === 0 ? "" : user.lastName))[0]}
+                    avatarName={user.firstName + " " + (index === 0 ? "" : user.lastName)}
+                    inputtype="h6"
+                    key={user._id}
+                    id={user._id}
+              />
                 </div>
-                <div className="col-md-3">
-                  <div className="circleOut">
-                    <i>
-                      <img src="assets/imgs/c2.jpg" />
-                    </i>
-                    <h6>Theresa Hamilton</h6>
-                  </div>
-                </div>
-                <div className="col-md-3">
-                  <div className="circleOut">
-                    <i>
-                      <img src="assets/imgs/c4.jpg" />
-                    </i>
-                    <h6>Josephine Cox</h6>
-                  </div>
-                </div>
-                <div className="col-md-3">
-                  <div className="circleOut">
-                    <i>
-                      <img src="assets/imgs/c5.jpg" />
-                    </i>
-                    <h6>Josephine Cox</h6>
-                  </div>
-                </div>
-                <div className="col-md-3">
-                  <div className="circleOut">
-                    <i>
-                      <img src="assets/imgs/c5.jpg" />
-                    </i>
-                    <h6>Josephine Cox</h6>
-                  </div>
-                </div>
-                <div className="col-md-3">
-                  <div className="circleOut">
-                    <i>
-                      <img src="assets/imgs/c6.jpg" />
-                    </i>
-                    <h6>Josephine Cox</h6>
-                  </div>
-                </div>
-                <div className="col-md-3">
-                  <div className="circleOut">
-                    <i>
-                      <img src="assets/imgs/c7.jpg" />
-                    </i>
-                    <h6>Josephine Cox</h6>
-                  </div>
-                </div>
-                <div className="col-md-3">
-                  <div className="circleOut">
-                    <i>
-                      <img src="assets/imgs/c8.jpg" />
-                    </i>
-                    <h6>Josephine Cox</h6>
-                  </div>
-                </div>
-                <div className="col-md-3">
-                  <div className="circleOut">
-                    <i>
-                      <img src="assets/imgs/c9.jpg" />
-                    </i>
-                    <h6>Pay</h6>
-                  </div>
-                </div>
-                <div className="col-md-3">
-                  <div className="circleOut">
-                    <i>
-                      <img src="assets/imgs/c2.jpg" />
-                    </i>
-                    <h6>Theresa Hamilton</h6>
-                  </div>
-                </div>
-                <div className="col-md-3">
-                  <div className="circleOut">
-                    <i>
-                      <img src="assets/imgs/c4.jpg" />
-                    </i>
-                    <h6>Josephine Cox</h6>
-                  </div>
-                </div>
-                <div className="col-md-3">
-                  <div className="circleOut">
-                    <i>
-                      <img src="assets/imgs/c5.jpg" />
-                    </i>
-                    <h6>Josephine Cox</h6>
-                  </div>
-                </div>
-                <div className="col-md-3">
-                  <div className="circleOut">
-                    <i>
-                      <img src="assets/imgs/c5.jpg" />
-                    </i>
-                    <h6>Josephine Cox</h6>
-                  </div>
-                </div>
-                <div className="col-md-3">
-                  <div className="circleOut">
-                    <i>
-                      <img src="assets/imgs/c6.jpg" />
-                    </i>
-                    <h6>Josephine Cox</h6>
-                  </div>
-                </div>
-                <div className="col-md-3">
-                  <div className="circleOut">
-                    <i>
-                      <img src="assets/imgs/c7.jpg" />
-                    </i>
-                    <h6>Josephine Cox</h6>
-                  </div>
-                </div>
-                <div className="col-md-3">
-                  <div className="circleOut">
-                    <i>
-                      <img src="assets/imgs/c8.jpg" />
-                    </i>
-                    <h6>Josephine Cox</h6>
-                  </div>
-                </div>
-                <div className="col-md-3">
-                  <div className="circleOut">
-                    <i>
-                      <img src="assets/imgs/c9.jpg" />
-                    </i>
-                    <h6>Pay</h6>
-                  </div>
-                </div>
-                <div className="col-md-3">
-                  <div className="circleOut">
-                    <i>
-                      <img src="assets/imgs/c2.jpg" />
-                    </i>
-                    <h6>Theresa Hamilton</h6>
-                  </div>
-                </div>
-                <div className="col-md-3">
-                  <div className="circleOut">
-                    <i>
-                      <img src="assets/imgs/c4.jpg" />
-                    </i>
-                    <h6>Josephine Cox</h6>
-                  </div>
-                </div>
-                <div className="col-md-3">
-                  <div className="circleOut">
-                    <i>
-                      <img src="assets/imgs/c5.jpg" />
-                    </i>
-                    <h6>Josephine Cox</h6>
-                  </div>
-                </div>
+                ))}
+                <div>
               </div>
+                </div>
             </div>
           </div>
         </div>

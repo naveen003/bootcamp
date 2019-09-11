@@ -14,7 +14,7 @@ import SetTransactionPin from './pages/SetTransactionPin';
 function App() {
   return (
     <Router>
-      <div className="container">
+      <div>
         <Route exact path="/" component={Login} />
         <Route path="/register" component={Register} />
         <Route path="/verifypin/:id" component={VerifyPin} />

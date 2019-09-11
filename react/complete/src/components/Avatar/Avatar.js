@@ -5,15 +5,25 @@ import Header from '../Header';
 
 const Avatar = props => (
   <div className={props.className}>
-    <i>
-      <img src={props.avatarUrl} alt={props.avatarName} />
-    </i>
-    <Header value={props.avatarText} inputtype={props.inputtype} />
+    <span className={props.id !== null && props.id !== undefined && props.id === "0" ?"mdi mdi-credit-card-outline icons":""}>{(props.id !== null && props.id !== undefined && props.id === "0" ) ? "" : props.avatarText}</span>
+    <Header value={props.avatarName} inputtype={props.inputtype} />
   </div>
 );
 
-Avatar.defaultProps = {};
+Avatar.defaultProps = {
+  avatarText: '',
+  className: '',
+  inputtype: 'p',
+  avatarName:'',
+  id:''
+};
 
-Avatar.propTypes = {};
+Avatar.propTypes = {
+  avatarText:PropTypes.string,
+  className: PropTypes.string,
+  inputtype: PropTypes.string,
+  avatarName:PropTypes.string,
+  id:PropTypes.string,
+};
 
 export default Avatar;
