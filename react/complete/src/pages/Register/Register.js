@@ -127,7 +127,7 @@ class Register extends React.Component {
       if (this.props.history !== undefined) {
         const response = await singleton.registerAsync(dataobj);
         if (response !== null) {
-          this.props.history.push(`/verifypin/${response.hash}`);
+          this.props.history.push(`/verifypin/${encodeURIComponent(response.hash)}`);
         }
       }
     }

@@ -57,7 +57,7 @@ class SetLoginPin extends React.Component {
       if (this.props.history !== undefined) {
         const dataObj = {
           pin:this.state.pin,
-          hash:this.props.match.params.id
+          hash:decodeURIComponent(this.props.match.params.id)
         };
         const response = await singleton.setpinAsync(dataObj,true);
         if(response !== null){
