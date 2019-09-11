@@ -112,3 +112,88 @@ button:focus{
 .help-block{
 color: red
 }
+
+.walletTopUpOut{
+  margin: 3rem 0 0 0;
+  padding: 0;
+}
+
+.walletTopUpOut h2{
+  margin: 0 0 0.7rem 0;
+  padding: 0;
+  font-size: 24px;
+  font-weight: 600;
+}
+.walletTopUpOut h2 small{
+  margin: 1rem 0 0.3rem 0;
+  padding: 0;
+  color: #707070;
+  font-size: 16px;
+  display: block;
+}
+.walletTopUpOut input[type="number"], .walletTopUpOut input[type="text"]{
+  margin: 0;
+  padding: 0.6rem 0 0.6rem .7rem;
+  width: 100%;
+  border-radius: .3rem;
+  border: 1px solid #DADADA;
+}
+.walletTopUpOut input[type="number"].innerSpace{
+  padding: 0.6rem 0 0.6rem 2.5rem;
+}
+.walletTopUpOut .icon{
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding: .3rem .6rem;
+  color: #707070;
+  font-size: 25px;
+}
+.walletTopUpOut .searchLists{
+  margin: 3rem 0 0 0;
+  padding: 0;
+}
+.walletTopUpOut .searchLists h5{
+  margin: 0 0 1rem 0;
+  padding: 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+.walletTopUpOut .searchLists .peopleImg{
+  width: 70px;
+  height: 70px;
+  display: block;
+  overflow: hidden;
+  border-radius: 50%;
+  float: left;
+  margin: 0 1rem 0 0;
+}
+.walletTopUpOut .searchLists .peopleImg img{
+  width: 100%;
+  max-width: 100%;
+}
+.walletTopUpOut .searchLists h6{
+  height: 70px;
+  vertical-align: middle;
+  display: table-cell;
+  color: #707070;
+  font-weight: 600;
+}
+.walletTopUpOut .searchLists .number{
+  height: 70px;
+  vertical-align: middle;
+  display: table-cell;
+  color: #707070;
+}
+.walletTopUpOut ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  text-align: left;
+}
+.walletTopUpOut ::-moz-placeholder { /* Firefox 19+ */
+  text-align: left;
+}
+.walletTopUpOut :-ms-input-placeholder { /* IE 10+ */
+  text-align: left;
+}
+.walletTopUpOut :-moz-placeholder { /* Firefox 18- */
+  text-align: left;
+}

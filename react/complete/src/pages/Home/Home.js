@@ -11,6 +11,7 @@ class Home extends React.Component {
       users:[],
       loginedUser:{}
     }
+    this.navigatetoTopup = this.navigatetoTopup.bind(this);
   }
   async componentDidMount() {
     var response = await singleton.getAllUsers();
@@ -26,6 +27,12 @@ class Home extends React.Component {
           }
       });
       this.setState({'users' : remainingData,'loginedUser':loggedinUser});
+    }
+  }
+
+  navigatetoTopup(){
+    if (this.props.history !== undefined) {
+      this.props.history.push('/topup');
     }
   }
 
@@ -51,7 +58,7 @@ class Home extends React.Component {
               </div>
               <div className={styles.bottom}>
                 <div className="row">
-                  <div className="col-4">
+                  <div className="col-4" onClick={this.navigatetoTopup}>
                     <div className={styles.circleOut}>
                       <i></i>
                       <h6>Top-up</h6>

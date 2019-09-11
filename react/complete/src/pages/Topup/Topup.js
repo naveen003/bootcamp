@@ -1,0 +1,90 @@
+import React from 'react';
+import styles from './Topup.module.css';
+import TextInput from '../../components/TextInput';
+import Button from '../../components/Button';
+import FormValidator from '../../validator/FormValidator';
+import Header from '../../components/Header';
+
+
+class Topup extends React.Component{
+  constructor(){
+    super();
+    this.validator = new FormValidator([
+      {
+        field: 'amount',
+        method: 'isEmpty',
+        validWhen: false,
+        message: 'amount is required.',
+      },
+      {
+        field: 'amount',
+        method: 'isCurrency',
+        validWhen: true,
+        message: 'Please enter valid amount and two digits after decimal',
+      }
+    ]);
+    this.state={
+      amount:'',
+      validation: this.validator.valid(),
+    }
+    this.addMoney = this.addMoney.bind(this);
+    this.textChanged = this.textChanged.bind(this);
+    this.submitted = false;
+  }
+
+  textChanged(event) {
+    if (event !== null && event.target !== null && event.target !== undefined) {
+      this.setState({
+        [event.target.name]: event.target.value,
+      });
+    }
+  }
+
+  addMoney(event){
+      event.preventDefault();
+      this.submitted = true;
+      const isFormValid = this.validator.validate(this.state);
+      this.setState({ validation: isFormValid });
+      console.log("isFormValid:",isFormValid);
+    if (this.props.history !== undefined && isFormValid.isValid) {
+      alert("Amount will be added to your account");
+    }
+  }
+  render(){
+    const validation = this.submitted
+      ? this.validator.validate(this.state)
+      : this.state.validation;
+    return(
+      <div className="container">
+        <div className="walletTopUpOut">
+        <Header value="Wallet Top-up" inputtype="h2" />
+            <div className="row">
+                <div className="col-9">
+                <TextInput
+                  className="form-control"
+                  type="text"
+                  name="amount"
+                  id="amount"
+                  placeholder="Amount"
+                  value={this.state.amount}
+                  handleChange={this.textChanged}
+                  haserror={validation.amount.isInvalid}
+                  errormessage={validation.amount.message}
+                />
+                </div>
+                <div className="col-3">
+                    <Button
+                    name="btnaddmoey"
+                    type="button"
+                    text="Add Money"
+                    id="btnaddmoey"
+                    onClick={this.addMoney}/>
+                </div>
+            </div>
+        </div>
+    </div>
+    )
+  }
+}
+
+export default Topup;

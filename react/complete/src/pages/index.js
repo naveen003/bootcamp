@@ -1,4 +1,5 @@
 /* PLOP_INJECT_IMPORT */
+import Topup from './Topup';
 import Home from './Home';
 import VerifyPin from './VerifyPin';
 import SetTransactionPin from './SetTransactionPin';
@@ -8,6 +9,7 @@ import Register from './Register';
 
 export {
   /* PLOP_INJECT_EXPORT */
+	Topup,
 	Home,
 	VerifyPin,
 	SetTransactionPin,

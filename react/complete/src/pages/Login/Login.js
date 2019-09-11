@@ -231,6 +231,8 @@ const Login = (props)  => {
           if (response.message !== null && response.message !== undefined) {
             alert(response.message);
           } else {
+            sessionStorage.token = response.token;
+            sessionStorage.userid = response._id;
             props.history.push('/home');
           }
         }

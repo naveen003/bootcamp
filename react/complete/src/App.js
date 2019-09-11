@@ -10,6 +10,7 @@ import VerifyPin from './pages/VerifyPin';
 import Home from './pages/Home';
 import SetLoginPin from './pages/SetLoginPin';
 import SetTransactionPin from './pages/SetTransactionPin';
+import Topup from './pages/Topup';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path="/home" component={Home} />
         <Route path="/loginpin/:id" component={SetLoginPin} />
         <Route path="/transactionpin/:id" component={SetTransactionPin} />
+        <Route path="/topup" component={Topup} />
       </div>
     </Router>
   );
