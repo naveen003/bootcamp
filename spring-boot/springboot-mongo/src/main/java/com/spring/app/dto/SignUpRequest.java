@@ -1,20 +1,12 @@
-package com.spring.app.models;
+package com.spring.app.dto;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+public class SignUpRequest {
 
-
-public class User {
-	@Id
 	private Integer id;
 	private String firstName;
 	private String lastName;
-	private String email;
 	private String dob;
 	private String mobile;
-	
-	private Integer loginPin;
-	
 	public Integer getId() {
 		return id;
 	}
@@ -27,18 +19,12 @@ public class User {
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
-	
-	
-	
 	public String getLastName() {
 		return lastName;
 	}
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-	
-	
-	
 	public String getDob() {
 		return dob;
 	}
@@ -51,12 +37,5 @@ public class User {
 	public void setMobile(String mobile) {
 		this.mobile = mobile;
 	}
-	public Integer getLoginPin() {
-		return loginPin;
-	}
-	public void setLoginPin(Integer loginPin) {
-		this.loginPin = loginPin;
-	}
-
 	
 }
