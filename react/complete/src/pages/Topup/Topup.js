@@ -47,7 +47,7 @@ class Topup extends React.Component{
       this.setState({ validation: isFormValid });
       console.log("isFormValid:",isFormValid);
     if (this.props.history !== undefined && isFormValid.isValid) {
-      alert("Amount will be added to your account");
+      this.props.history.push("/payment/" +this.state.amount)
     }
   }
   render(){

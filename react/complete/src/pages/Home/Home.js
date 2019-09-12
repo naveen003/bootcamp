@@ -12,6 +12,7 @@ class Home extends React.Component {
       loginedUser:{}
     }
     this.navigatetoTopup = this.navigatetoTopup.bind(this);
+    this.navigatetoAddPayee = this.navigatetoAddPayee.bind(this);
   }
   async componentDidMount() {
     var response = await singleton.getAllUsers();
@@ -33,6 +34,12 @@ class Home extends React.Component {
   navigatetoTopup(){
     if (this.props.history !== undefined) {
       this.props.history.push('/topup');
+    }
+  }
+
+  navigatetoAddPayee(){
+    if (this.props.history !== undefined) {
+      this.props.history.push('/addpayee');
     }
   }
 
@@ -64,7 +71,7 @@ class Home extends React.Component {
                       <h6>Top-up</h6>
                     </div>
                   </div>
-                  <div className="col-4">
+                  <div className="col-4" onClick={this.navigatetoAddPayee}>
                     <div className={styles.circleOut}>
                       <i></i>
                       <h6>Add Payee</h6>
