@@ -5,6 +5,8 @@ import java.util.Collection;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -24,41 +26,41 @@ public class AuthController {
 	@Autowired private UserService userService;
 	
 	@GetMapping(value = "/getall")
-	public Collection<User> getAllUser()
+	public ResponseEntity<Collection<User>> getAllUser()
 	{
-		return userService.getAllUser();
+		return new ResponseEntity<>(userService.getAllUser(),HttpStatus.OK);
 	}
 	
 	@PostMapping(value = "/addUser")
-	public String createUser(@RequestBody SignUpRequest signupRequest)
+	public ResponseEntity<String> createUser(@RequestBody SignUpRequest signupRequest)
 	{
 		//This goes in service layer
 		User user = ObjectMappingHelper.getUserObject(signupRequest);
 		List<User> users=new ArrayList<User>();
 		users.add(user);
 		userService.createUser(users);
-		return "Sucess"; //Don't do this {Bad Practice}
+		return new ResponseEntity<>("Sucess", HttpStatus.OK);
 	}
 	
 	@PostMapping(value = "/setPin")
-	public String setLoginPin(@RequestBody LoginPinRequest loginPinRequest)
+	public ResponseEntity<String> setLoginPin(@RequestBody LoginPinRequest loginPinRequest)
 	{
 		userService.updatePin(loginPinRequest);
 		
-		return "Sucess"; //Don't do this {Bad Practice}
+		return new ResponseEntity<>("Sucess", HttpStatus.OK);
 	}
 	
 	@PostMapping(value = "/verifyPin")
-	public String verifyLoginPin(@RequestBody LoginPinRequest loginPinRequest)
+	public ResponseEntity<String> verifyLoginPin(@RequestBody LoginPinRequest loginPinRequest)
 	{
 		if(userService.validateUser(loginPinRequest))
 		{
-			return "Sucess"; //Don't do this {Bad Practice}
+			return new ResponseEntity<>("Sucess", HttpStatus.OK);
 
 		}
 		
 
-		return "Invalid Pin"; //Don't do this {Bad Practice}
+		return new ResponseEntity<>("Invalid Pin", HttpStatus.OK);
 	}
 	
 }

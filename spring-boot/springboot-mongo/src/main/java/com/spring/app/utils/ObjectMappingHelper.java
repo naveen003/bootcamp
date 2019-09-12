@@ -14,6 +14,7 @@ public class ObjectMappingHelper {
 		user.setLastName(signupRequest.getLastName()); 
 		user.setDob(signupRequest.getDob()); 
 		user.setMobile(signupRequest.getMobile()); 
+		user.setEmail(signupRequest.getEmail()); 
 
 		return user;
 	}
