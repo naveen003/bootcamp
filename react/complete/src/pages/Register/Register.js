@@ -146,102 +146,102 @@ class Register extends React.Component {
       ? this.validator.validate(this.state)
       : this.state.validation;
     return (
-    <div className="container">
-      <div className="row">
-        <div className="offset-md-1 col-md-10">
-          <div className="loginOut">
-            <h4 className="mb-3">Sign Up</h4>
-            <form onSubmit={this.handleSubmit}>
-              <div className="row">
-                <div className="col-md-6 ">
-                  <TextInput
-                    labelFor="firstname"
-                    label="Firstname"
-                    placeholder="First Name"
-                    className="form-control"
-                    type="text"
-                    name="firstname"
-                    id="firstname"
-                    value={this.state.firstname}
-                    handleChange={this.handleChange}
-                    haserror={validation.firstname.isInvalid}
-                    errormessage={validation.firstname.message}
-                  />
+      <div className="container">
+        <div className="row">
+          <div className="offset-md-1 col-md-10">
+            <div className="loginOut">
+              <h4 className="mb-3">Sign Up</h4>
+              <form onSubmit={this.handleSubmit}>
+                <div className="row">
+                  <div className="col-md-6 ">
+                    <TextInput
+                      labelFor="firstname"
+                      label="Firstname"
+                      placeholder="First Name"
+                      className="form-control"
+                      type="text"
+                      name="firstname"
+                      id="firstname"
+                      value={this.state.firstname}
+                      handleChange={this.handleChange}
+                      haserror={validation.firstname.isInvalid}
+                      errormessage={validation.firstname.message}
+                    />
+                  </div>
+                  <div className="col-md-6 ">
+                    <TextInput
+                      labelFor="lastname"
+                      label="Lastname"
+                      placeholder="Last Name"
+                      className="form-control"
+                      type="text"
+                      name="lastname"
+                      id="lastname"
+                      value={this.state.lastname}
+                      handleChange={this.handleChange}
+                      haserror={validation.lastname.isInvalid}
+                      errormessage={validation.lastname.message}
+                    />
+                  </div>
                 </div>
-                <div className="col-md-6 ">
-                  <TextInput
-                    labelFor="lastname"
-                    label="Lastname"
-                    placeholder="Last Name"
-                    className="form-control"
-                    type="text"
-                    name="lastname"
-                    id="lastname"
-                    value={this.state.lastname}
-                    handleChange={this.handleChange}
-                    haserror={validation.lastname.isInvalid}
-                    errormessage={validation.lastname.message}
-                  />
+                <div className="row">
+                  <div className="col-md-6">
+                    <TextInput
+                      labelFor="dob"
+                      label="Dob"
+                      placeholder="yyyy-mm-dd"
+                      className="form-control"
+                      type="text"
+                      name="dob"
+                      id="dob"
+                      value={this.state.dob}
+                      handleChange={this.handleChange}
+                      haserror={validation.dob.isInvalid}
+                      errormessage={validation.dob.message}
+                    />
+                  </div>
+                  <div className="col-md-6 ">
+                    <TextInput
+                      labelFor="email"
+                      label="E-mail"
+                      placeholder="Email"
+                      className="form-control"
+                      type="email"
+                      name="email"
+                      id="email"
+                      value={this.state.email}
+                      handleChange={this.handleChange}
+                      haserror={validation.email.isInvalid}
+                      errormessage={validation.email.message}
+                    />
+                  </div>
                 </div>
-              </div>
-              <div className="row">
-                <div className="col-md-6">
-                  <TextInput
-                    labelFor="dob"
-                    label="Dob"
-                    placeholder="yyyy-mm-dd"
-                    className="form-control"
-                    type="text"
-                    name="dob"
-                    id="dob"
-                    value={this.state.dob}
-                    handleChange={this.handleChange}
-                    haserror={validation.dob.isInvalid}
-                    errormessage={validation.dob.message}
-                  />
+                <div className="row">
+                  <div className="col-md-6 ">
+                    <TextInput
+                      labelFor="number"
+                      label="Number"
+                      placeholder="(xxx)xxx-xxxx"
+                      className="form-control"
+                      type="text"
+                      name="mobile"
+                      id="mobile"
+                      value={this.state.mobile}
+                      handleChange={this.handleChange}
+                      haserror={validation.mobile.isInvalid}
+                      errormessage={validation.mobile.message}
+                    />
+                  </div>
                 </div>
-                <div className="col-md-6 ">
-                  <TextInput
-                    labelFor="email"
-                    label="E-mail"
-                    placeholder="Email"
-                    className="form-control"
-                    type="email"
-                    name="email"
-                    id="email"
-                    value={this.state.email}
-                    handleChange={this.handleChange}
-                    haserror={validation.email.isInvalid}
-                    errormessage={validation.email.message}
-                  />
+                <div className="row">
+                  <div className="col-md-3">
+                    <button type="submit">Signup me up!</button>
+                  </div>
                 </div>
-              </div>
-              <div className="row">
-                <div className="col-md-6 ">
-                  <TextInput
-                    labelFor="number"
-                    label="Number"
-                    placeholder="(xxx)xxx-xxxx"
-                    className="form-control"
-                    type="text"
-                    name="mobile"
-                    id="mobile"
-                    value={this.state.mobile}
-                    handleChange={this.handleChange}
-                    haserror={validation.mobile.isInvalid}
-                    errormessage={validation.mobile.message}
-                  />
-                </div>
-              </div>
-              <div className="row">
-                <div className="col-md-3">
-                  <button type="submit">Signup me up!</button>
-                </div>
-              </div>
-            </form>
+              </form>
+            </div>
           </div>
         </div>
-      </div>
       </div>
     );
   }

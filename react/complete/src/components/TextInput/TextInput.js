@@ -15,7 +15,10 @@ const TextInput = props => (
       placeholder={props.placeholder}
     />
     {props.haserror && (
-      <span className={props.haserror ? 'help-block' : ''}>
+      <span
+        id={`error-${props.name}`}
+        className={props.haserror ? 'help-block' : ''}
+      >
         {props.errormessage}
       </span>
     )}
