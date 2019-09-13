@@ -11,6 +11,7 @@ function jwt() {
             // public routes that don't require authentication
             '/users/authenticate',
             '/users/register',
+            '/users/verifyotp',
             '/users/setloginpin',
             '/users/settransactionpin',
             '/sendmail'

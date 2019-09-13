@@ -5,6 +5,7 @@ const userService = require('./user.service');
 // routes
 router.post('/authenticate', authenticate);
 router.post('/register', register);
+router.post('/verifyotp', verifyOtp);
 router.post('/setloginpin', setLoginPin);
 router.post('/settransactionpin', setTransactionPin);
 router.get('/', getAll);
@@ -24,6 +25,12 @@ function authenticate(req, res, next) {
 function register(req, res, next) {
     userService.create(req.body)
         .then((hash) => res.json(hash))
+        .catch(err => next(err));
+}
+
+function verifyOtp(req, res, next) {
+    userService.verifyOtp(req.body)
+        .then(() => res.json({}))
         .catch(err => next(err));
 }
 

@@ -15,6 +15,7 @@ module.exports = {
     getById,
     create,
     update,
+    verifyOtp,
     setLoginPin,
     setTransactionPin,
     delete: _delete
@@ -114,6 +115,12 @@ async function update(id, userParam) {
     Object.assign(user, userParam);
 
     await user.save();
+}
+
+async function verifyOtp(userParam) {
+    const user = await User.findOne({ hash: userParam.hash, otp: userParam.otp });
+    if (!user) throw 'Invalid hash or otp';
+    return { "success": true };
 }
 
 async function setLoginPin(userParam) {
