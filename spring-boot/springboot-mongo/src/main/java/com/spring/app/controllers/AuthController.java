@@ -47,20 +47,40 @@ public class AuthController {
 	{
 		userService.updatePin(loginPinRequest);
 		
-		return new ResponseEntity<>("Sucess", HttpStatus.OK);
+		return new ResponseEntity<>("Sucess", HttpStatus.NO_CONTENT);
 	}
 	
 	@PostMapping(value = "/verifyPin")
 	public ResponseEntity<String> verifyLoginPin(@RequestBody LoginPinRequest loginPinRequest)
 	{
-		if(userService.validateUser(loginPinRequest))
+		if(userService.validateUserPin(loginPinRequest))
 		{
 			return new ResponseEntity<>("Sucess", HttpStatus.OK);
 
 		}
-		
 
-		return new ResponseEntity<>("Invalid Pin", HttpStatus.OK);
+		return new ResponseEntity<>("Invalid Pin", HttpStatus.UNAUTHORIZED);
+	}
+	
+	
+	@PostMapping(value = "/setTransactionPin")
+	public ResponseEntity<String> setTransactionPin(@RequestBody LoginPinRequest loginPinRequest)
+	{
+		userService.updateTransactionPin(loginPinRequest);
+		
+		return new ResponseEntity<>("Sucess", HttpStatus.NO_CONTENT);
+	}
+	
+	@PostMapping(value = "/verifyTransactionPin")
+	public ResponseEntity<String> verifyTransactionPin(@RequestBody LoginPinRequest loginPinRequest)
+	{
+		if(userService.validateTransactionPin(loginPinRequest))
+		{
+			return new ResponseEntity<>("Sucess", HttpStatus.OK);
+
+		}
+
+		return new ResponseEntity<>("Invalid Pin", HttpStatus.UNAUTHORIZED);
 	}
 	
 }

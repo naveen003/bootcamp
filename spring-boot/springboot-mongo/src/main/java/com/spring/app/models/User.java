@@ -14,6 +14,8 @@ public class User {
 	private String mobile;
 	
 	private Integer loginPin;
+	private Integer transactionPin;
+
 	
 	public Integer getId() {
 		return id;
@@ -62,6 +64,12 @@ public class User {
 	}
 	public void setLoginPin(Integer loginPin) {
 		this.loginPin = loginPin;
+	}
+	public Integer getTransactionPin() {
+		return transactionPin;
+	}
+	public void setTransactionPin(Integer transactionPin) {
+		this.transactionPin = transactionPin;
 	}
 
 	

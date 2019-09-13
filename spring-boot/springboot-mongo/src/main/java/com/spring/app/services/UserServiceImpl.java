@@ -43,12 +43,37 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public boolean validateUser(LoginPinRequest loginPinRequest) {
+	public boolean validateUserPin(LoginPinRequest loginPinRequest) {
 
 		User user=userRepository.findById(loginPinRequest.getUserId()).orElse(new User());
 		if(user.getId()!=null)
 		{
 			if(user.getLoginPin() == loginPinRequest.getLoginPin())
+			{
+				return true;
+			}
+		}
+		
+		return false;
+	}
+
+	@Override
+	public void updateTransactionPin(LoginPinRequest loginPinRequest) {
+		User user=userRepository.findById(loginPinRequest.getUserId()).orElse(new User());
+		if(user.getId()!=null)
+		{
+			user.setTransactionPin(loginPinRequest.getLoginPin());
+			userRepository.save(user);
+		}		
+	}
+	
+	@Override
+	public boolean validateTransactionPin(LoginPinRequest loginPinRequest) {
+
+		User user=userRepository.findById(loginPinRequest.getUserId()).orElse(new User()); //Don't do this {throw custom error here}
+		if(user.getId()!=null)
+		{
+			if(user.getTransactionPin() == loginPinRequest.getLoginPin())
 			{
 				return true;
 			}

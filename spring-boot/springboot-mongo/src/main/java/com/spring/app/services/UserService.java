@@ -13,6 +13,8 @@ public interface UserService {
 	public Collection<User> getAllUser();
 	public void  createUser(List<User> users);
 	public void updatePin(LoginPinRequest loginPinRequest);
-	public boolean validateUser(LoginPinRequest loginPinRequest);
+	public boolean validateUserPin(LoginPinRequest loginPinRequest);
+	public void updateTransactionPin(LoginPinRequest loginPinRequest);
+	public boolean validateTransactionPin(LoginPinRequest loginPinRequest);
 
 }
