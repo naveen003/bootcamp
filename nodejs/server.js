@@ -7,6 +7,9 @@ const jwt = require('_helpers/jwt');
 const errorHandler = require('_helpers/error-handler');
 const nodeMailer = require('nodemailer');
 
+const emailUserrname = "";
+const emailPassword = ""
+
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cors());
@@ -23,8 +26,8 @@ app.post('/sendmail', function (req, res) {
         port: 465,
         secure: true,
         auth: {
-            user: 'naveen.g@spurtreetech.com',
-            pass: 'photonnrn'
+            user: emailUserrname,
+            pass: emailPassword
         }
     });
     console.log(req.body)
