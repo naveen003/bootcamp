@@ -17,6 +17,7 @@ class Home extends React.Component {
   async componentDidMount() {
     var response = await singleton.getAllUsers();
     if(response !== null){
+      console.log("Response:",response);
       let loggedinUser = {};
       let remainingData = [];
       remainingData.push({firstName:"Pay", _id:"0"});
@@ -92,13 +93,13 @@ class Home extends React.Component {
               <h4>Recent Transactions</h4>
                   <div className="row">
                 {this.state.users.map((user,index) => (
-                  <div className={styles.circleOut  + " col-3 " + styles.cussorpointer}>
+                  <div className={styles.circleOut  + " col-3 " + styles.cussorpointer} key={index}>
                   <Avatar
                     className={styles.top}
                     avatarText={(user.firstName + " " + (index === 0 ? "" : user.lastName))[0]}
                     avatarName={user.firstName + " " + (index === 0 ? "" : user.lastName)}
                     inputtype="h6"
-                    key={user._id}
+                    key={index}
                     id={user._id}
               />
                 </div>

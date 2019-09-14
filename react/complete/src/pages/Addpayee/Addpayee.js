@@ -5,14 +5,14 @@ import styles from './Addpayee.module.css';
 class Addpayee extends React.Component{
   render(){
     return(
-      <div class="container">
-        <div class="walletTopUpOut">
+      <div className="container">
+        <div className="walletTopUpOut">
             <h2>Add Payee</h2>
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="pr">
-                        <i class="mdi mdi-magnify icon"></i>
-                        <input type="number" class="innerSpace" placeholder="Search number" />
+            <div className="row">
+                <div className="col-md-12">
+                    <div className="pr">
+                        <i className="mdi mdi-magnify icon"></i>
+                        <input type="number" className="innerSpace" placeholder="Search number" />
                     </div>
                 </div>
             </div>

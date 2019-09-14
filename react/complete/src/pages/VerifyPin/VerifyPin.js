@@ -1,10 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
 import TextInput from '../../components/TextInput';
 import Button from '../../components/Button';
 import Header from '../../components/Header';
-
+import singleton from '../../services/authenticateApi';
 import FormValidator from '../../validator/FormValidator';
 
 class VerifyPin extends React.Component {
@@ -35,11 +34,18 @@ class VerifyPin extends React.Component {
       });
     }
   }
-
-  navigateOnVerification(validation) {
+  async navigateOnVerification(validation) {
     if (validation.isValid) {
       if (this.props.history !== undefined) {
-        this.props.history.push(`/loginpin/${this.props.match.params.id}`);
+        let otpObj = {};
+        otpObj.hash = decodeURIComponent(this.props.match.params.id);
+        otpObj.otp = this.state.verifypin;
+        var resposne = await singleton.verifyOtp(otpObj);
+        if(resposne !== null){
+          this.props.history.push('/loginpin/' + this.props.match.params.id);
+        }else{
+          alert(resposne);
+        }
       }
     }
   }

@@ -32,6 +32,36 @@ const createAuthenticateApi = () => ({
       return null;
     }
   },
+  async getUserbyId(userid) {
+    try {
+      const response = await fetch('http://localhost:4000/users/' + userid, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': "Bearer "+ sessionStorage.token,
+        },
+      });
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      return null;
+    }
+  },
+  async verifyOtp(otpObj){
+    try {
+      const response = await fetch('http://localhost:4000/users/verifyotp', {
+        method: 'POST',
+        body: JSON.stringify(otpObj),
+        headers: {
+          'Content-Type': 'application/json'
+        },
+      });
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      return null;
+    }
+  }
 });
 
 const singleton = createAuthenticateApi();

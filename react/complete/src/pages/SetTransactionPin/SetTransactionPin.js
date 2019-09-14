@@ -49,7 +49,7 @@ class SetTransactionPin extends React.Component {
           pin: this.state.pin,
           hash: decodeURIComponent(this.props.match.params.id)
         };
-        const response = await singleton.setpinAsync(dataObj, true);
+        const response = await singleton.setpinAsync(dataObj);
         // console.log('Api Called....');
         if (response !== null) {
           if (
