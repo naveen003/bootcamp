@@ -34,6 +34,7 @@ class SetTransactionPin extends React.Component {
     this.state = {
       pin: '',
       confirmpin: '',
+      servererror:'',
       validation: this.validator.valid(),
     };
     this.submitted = false;
@@ -50,17 +51,17 @@ class SetTransactionPin extends React.Component {
           hash: decodeURIComponent(this.props.match.params.id)
         };
         const response = await singleton.setpinAsync(dataObj);
-        // console.log('Api Called....');
         if (response !== null) {
-          if (
-            response.message !== null &&
-            response.message !== undefined &&
-            response.message.length > 0
-          ) {
-            alert(response.message);
+          if ( response.message && response.message.length > 0) {
+            this.setState({ servererror: response.message });
           } else {
-            alert('Account as been Created....');
+            this.setState({ servererror: "Account Created Successfully !!!" });
+            setTimeout(() => {
+              this.props.history.push('/');  
+            }, 1500);
           }
+        }else{
+          this.setState({ servererror: "Internal Server Error" });
         }
       }
     }
@@ -69,6 +70,7 @@ class SetTransactionPin extends React.Component {
   pinMatch = (confirmation, state) => state.pin === confirmation;
 
   textChanged(event) {
+    this.setState({ servererror: ""});
     if (event !== null && event.target !== null && event.target !== undefined) {
       this.setState({
         [event.target.name]: event.target.value,
@@ -77,15 +79,14 @@ class SetTransactionPin extends React.Component {
   }
 
   async buttonClick(event) {
+    this.setState({ servererror: ""});
     if (event !== null && event.target !== null && event.target !== undefined) {
       if (event.target.name === 'verifypin') {
         event.preventDefault();
         this.submitted = true;
         const isFormValid = this.validator.validate(this.state);
         this.setState({ validation: isFormValid });
-        // console.log('Before....');
         await this.navigateOnSuccess(isFormValid);
-        // console.log('After....');
       }
     }
   }
@@ -133,6 +134,9 @@ class SetTransactionPin extends React.Component {
                   />
                 </div>
               </div>
+              {
+                this.state.servererror.length > 0 ? <Header className="errorSpan" value={this.state.servererror} inputtype="p" /> : null
+              }
             </div>
           </div>
         </div>

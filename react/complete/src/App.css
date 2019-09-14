@@ -299,3 +299,8 @@ color: red
   -webkit-transform: none;
   transform: none;
 }
+
+.errorSpan{
+  color: red !important;
+  margin-top:20px !important
+}

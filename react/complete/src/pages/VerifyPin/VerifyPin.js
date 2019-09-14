@@ -6,6 +6,7 @@ import Header from '../../components/Header';
 import singleton from '../../services/authenticateApi';
 import FormValidator from '../../validator/FormValidator';
 
+
 class VerifyPin extends React.Component {
   constructor() {
     super();
@@ -19,6 +20,7 @@ class VerifyPin extends React.Component {
     ]);
     this.state = {
       verifypin: '',
+      servererror:'',
       validation: this.validator.valid(),
     };
     this.submitted = false;
@@ -28,6 +30,7 @@ class VerifyPin extends React.Component {
   }
 
   textChanged(event) {
+    this.setState({ servererror: ""});
     if (event !== null && event.target !== null && event.target !== undefined) {
       this.setState({
         [event.target.name]: event.target.value,
@@ -42,15 +45,20 @@ class VerifyPin extends React.Component {
         otpObj.otp = this.state.verifypin;
         var resposne = await singleton.verifyOtp(otpObj);
         if(resposne !== null){
-          this.props.history.push('/loginpin/' + this.props.match.params.id);
+          if(resposne.message && resposne.message.length > 0){
+            this.setState({ servererror: resposne.message });
+          }else{
+            this.props.history.push('/loginpin/' + this.props.match.params.id);
+          }
         }else{
-          alert(resposne);
+          this.setState({ servererror: "Inetrnal Server Error" });
         }
       }
     }
   }
 
   buttonClick(event) {
+    this.setState({ servererror: "" });
     if (event !== null && event.target !== null && event.target !== undefined) {
       if (event.target.name === 'verify') {
         event.preventDefault();
@@ -99,6 +107,9 @@ class VerifyPin extends React.Component {
                   </Button>
                 </div>
               </div>
+              {
+                this.state.servererror.length > 0 ? <Header className="errorSpan" value={this.state.servererror} inputtype="p" /> : null
+              }
             </div>
           </div>
         </div>

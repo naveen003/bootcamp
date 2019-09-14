@@ -34,6 +34,7 @@ class SetLoginPin extends React.Component {
     this.state = {
       pin: '',
       confirmpin: '',
+      servererror:'',
       validation: this.validator.valid(),
     };
     this.submitted = false;
@@ -45,6 +46,7 @@ class SetLoginPin extends React.Component {
   pinMatch = (confirmation, state) => state.pin === confirmation;
 
   textChanged(event) {
+    this.setState({ servererror: ""});
     if (event !== null && event.target !== null && event.target !== undefined) {
       this.setState({
         [event.target.name]: event.target.value,
@@ -61,17 +63,20 @@ class SetLoginPin extends React.Component {
         };
         const response = await singleton.setpinAsync(dataObj,true);
         if(response !== null){
-          if(response.message !== null && response.message !== undefined && response.message.length > 0){
-            alert(response.message);
+          if(response.message && response.message.length > 0){
+            this.setState({ servererror: response.message });
           }else{
             this.props.history.push('/transactionpin/' + this.props.match.params.id);
           }
+        }else{
+          this.setState({ servererror: "Inetrnal Server Error" });
         }
       }
     }
   }
 
   async buttonClick(event) {
+    this.setState({ servererror: ""});
     if (event !== null && event.target !== null && event.target !== undefined) {
       if (event.target.name === 'verifypin') {
         event.preventDefault();
@@ -131,6 +136,9 @@ class SetLoginPin extends React.Component {
                   />
                 </div>
               </div>
+              {
+                this.state.servererror.length > 0 ? <Header className="errorSpan" value={this.state.servererror} inputtype="p" /> : null
+              }
             </div>
           </div>
         </div>

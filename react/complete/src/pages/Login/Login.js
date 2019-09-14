@@ -169,23 +169,18 @@ import PropTypes from 'prop-types';
 import FormValidator from '../../validator/FormValidator';
 import singleton from '../../services/authenticateApi';
 import TextInput from '../../components/TextInput';
+import Header from '../../components/Header';
 
 const Login = (props)  => {
   const  [email, setemail] =  useState('')
   const  [code,setcode ]= useState('')
+  const  [servererror,setservererror ]= useState('')
   const validator = new FormValidator([
     {
       field: 'code',
       method: 'isEmpty',
       validWhen: false,
       message: 'Pleave provide a valid pin.',
-    },
-    {
-      field: 'code',
-      method: 'matches',
-      args: [/^\d{4}$/], // args is an optional array of arguements that will be passed to the validation method
-      validWhen: true,
-      message: 'That is not a valid pin.',
     },
     {
       field: 'email',
@@ -204,6 +199,7 @@ const Login = (props)  => {
   const [validation,setvalidation]= useState(validator.valid());
 
   const handleChange = (event) =>{
+    setservererror('');
     const { target } = event;
     const { name } = target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
@@ -214,12 +210,14 @@ const Login = (props)  => {
     }
   }
   function handleSignupClick() {
+    setservererror('');
     if (props.history !== undefined) {
         props.history.push('/register');
     }
   }
   
   async function navigateToHome(validation) {
+    setservererror('');
     if (validation.isValid) {
       if (props.history !== undefined) {
         const userObj = {
@@ -229,12 +227,14 @@ const Login = (props)  => {
         const response = await singleton.authenticateUser(userObj);
         if (response !== null && response !== undefined) {
           if (response.message !== null && response.message !== undefined) {
-            alert(response.message);
+            setservererror(response.message);
           } else {
             sessionStorage.token = response.token;
             sessionStorage.userid = response._id;
             props.history.push('/home');
           }
+        }else{
+          setservererror("Internal Server Error");
         }
       }
     }
@@ -250,7 +250,7 @@ const Login = (props)  => {
   }
   return (
     <div className="container">
-          <div className="row">
+      <div className="row">
         <div className="offset-md-3 col-md-5">
           <div className="loginOut">
             <h4>Welcome</h4>
@@ -296,6 +296,10 @@ const Login = (props)  => {
                 </div>
               </div>
             </form>
+            {
+              servererror.length > 0 ? <Header className="errorSpan" value={servererror} inputtype="p" /> : null
+            }
+            
           </div>
         </div>
       </div>

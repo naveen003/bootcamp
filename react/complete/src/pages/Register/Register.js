@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 // import styles from './Register.module.css';
-
+import Header from '../../components/Header';
 import TextInput from '../../components/TextInput';
 
 import FormValidator from '../../validator/FormValidator';
@@ -64,6 +64,7 @@ class Register extends React.Component {
       dob: '',
       email: '',
       mobile: '',
+      servererror:'',
       validation: this.validator.valid(),
     };
     this.submitted = false;
@@ -73,6 +74,7 @@ class Register extends React.Component {
   }
 
   handleChange(event) {
+    this.setState({ servererror: ""});
     const { target } = event;
     const { name } = target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
@@ -127,9 +129,15 @@ class Register extends React.Component {
       if (this.props.history !== undefined) {
         const response = await singleton.registerAsync(dataobj);
         if (response !== null) {
-          this.props.history.push(
-            `/verifypin/${encodeURIComponent(response.hash)}`,
-          );
+          if(response.message && response.message.length > 0){
+            this.setState({ servererror: response.message });
+          }else{
+            this.props.history.push(
+              `/verifypin/${encodeURIComponent(response.hash)}`,
+            );
+          }
+        }else{
+          this.setState({ servererror: "Inetrnal Server Error" });
         }
       }
     }
@@ -140,6 +148,7 @@ class Register extends React.Component {
     this.submitted = true;
     const isFormValid = this.validator.validate(this.state);
     this.setState({ validation: isFormValid });
+    this.setState({ servererror: "" });
     this.navigateOnRegister(isFormValid);
   }
 
@@ -232,6 +241,7 @@ class Register extends React.Component {
                       handleChange={this.handleChange}
                       haserror={validation.mobile.isInvalid}
                       errormessage={validation.mobile.message}
+                      maxlength={13}
                     />
                   </div>
                 </div>
@@ -241,6 +251,9 @@ class Register extends React.Component {
                   </div>
                 </div>
               </form>
+              {
+                this.state.servererror.length > 0 ? <Header className="errorSpan" value={this.state.servererror} inputtype="p" /> : null
+              }
             </div>
           </div>
         </div>

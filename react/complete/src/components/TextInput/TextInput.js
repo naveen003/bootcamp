@@ -13,6 +13,7 @@ const TextInput = props => (
       onChange={props.handleChange}
       className={props.className}
       placeholder={props.placeholder}
+      maxlength={props.maxlength}
     />
     {props.haserror && (
       <span
@@ -38,6 +39,7 @@ TextInput.defaultProps = {
   placeholder: '',
   haserror: false,
   errormessage: '',
+  maxlength:''
 };
 
 TextInput.propTypes = {
@@ -53,6 +55,7 @@ TextInput.propTypes = {
   placeholder: PropTypes.string,
   haserror: PropTypes.bool,
   errormessage: PropTypes.string,
+  maxlength:PropTypes.string,
 };
 
 export default TextInput;
