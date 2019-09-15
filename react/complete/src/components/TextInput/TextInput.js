@@ -13,7 +13,7 @@ const TextInput = props => (
       onChange={props.handleChange}
       className={props.className}
       placeholder={props.placeholder}
-      maxlength={props.maxlength}
+      maxLength={props.maxlength}
     />
     {props.haserror && (
       <span

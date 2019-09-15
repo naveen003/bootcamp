@@ -132,9 +132,7 @@
     font-size: 16px;
     margin: .5rem 0 0 0;
 }
-.cussorpointer{
-    cursor: pointer;
-}
+
 
 @media(min-width: 320px) and (max-width: 767px){
     .dashboardRightContent .circleOut i {

@@ -43,18 +43,18 @@ class Paymentoption extends React.Component{
       errormessage:"Please enter CVV to Proceed"
     };
     CardDetals.push(card3);
-    let card4 = {
-      bankname:"New Debit Card",
-      selected:false,
-      iscard:false
-    };
-    CardDetals.push(card4);
-    let card5 = {
-      bankname:"New Credit Card",
-      selected:false,
-      iscard:false
-    };
-    CardDetals.push(card5);
+    // let card4 = {
+    //   bankname:"New Debit Card",
+    //   selected:false,
+    //   iscard:false
+    // };
+    // CardDetals.push(card4);
+    // let card5 = {
+    //   bankname:"New Credit Card",
+    //   selected:false,
+    //   iscard:false
+    // };
+    // CardDetals.push(card5);
     this.state={
       CardDetails:CardDetals,
       SelectedCardDetals:{}

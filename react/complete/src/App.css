@@ -142,7 +142,7 @@ color: red
   border-radius: .3rem;
   border: 1px solid #DADADA;
 }
-.walletTopUpOut input[type="number"].innerSpace{
+.walletTopUpOut input[type="text"].innerSpace{
   padding: 0.6rem 0 0.6rem 2.5rem;
 }
 .walletTopUpOut .icon{
@@ -303,4 +303,7 @@ color: red
 .errorSpan{
   color: red !important;
   margin-top:20px !important
+}
+.cussorpointer{
+  cursor: pointer !important;
 }

@@ -241,7 +241,7 @@ class Register extends React.Component {
                       handleChange={this.handleChange}
                       haserror={validation.mobile.isInvalid}
                       errormessage={validation.mobile.message}
-                      maxlength={13}
+                      maxlength={"13"}
                     />
                   </div>
                 </div>

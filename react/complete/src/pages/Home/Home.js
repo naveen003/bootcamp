@@ -17,7 +17,6 @@ class Home extends React.Component {
   async componentDidMount() {
     var response = await singleton.getAllUsers();
     if(response !== null){
-      console.log("Response:",response);
       let loggedinUser = {};
       let remainingData = [];
       remainingData.push({firstName:"Pay", _id:"0"});
@@ -66,19 +65,19 @@ class Home extends React.Component {
               </div>
               <div className={styles.bottom}>
                 <div className="row">
-                  <div className="col-4" onClick={this.navigatetoTopup}>
+                  <div className="col-4 cussorpointer"  onClick={this.navigatetoTopup}>
                     <div className={styles.circleOut}>
                       <i></i>
                       <h6>Top-up</h6>
                     </div>
                   </div>
-                  <div className="col-4" onClick={this.navigatetoAddPayee}>
+                  <div className="col-4 cussorpointer" onClick={this.navigatetoAddPayee}>
                     <div className={styles.circleOut}>
                       <i></i>
                       <h6>Add Payee</h6>
                     </div>
                   </div>
-                  <div className="col-4">
+                  <div className="col-4 cussorpointer">
                     <div className={styles.circleOut}>
                       <i></i>
                       <h6>History</h6>
