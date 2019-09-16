@@ -30,8 +30,13 @@ class Topup extends React.Component{
     this.addMoney = this.addMoney.bind(this);
     this.textChanged = this.textChanged.bind(this);
     this.submitted = false;
+    this.goBack = this.goBack.bind(this);
   }
-
+  goBack(){
+    if (this.props.history !== undefined) {
+      this.props.history.goBack()
+    } 
+  }
   textChanged(event) {
     if (event !== null && event.target !== null && event.target !== undefined) {
       this.setState({
@@ -45,10 +50,9 @@ class Topup extends React.Component{
       this.submitted = true;
       const isFormValid = this.validator.validate(this.state);
       this.setState({ validation: isFormValid });
-      console.log("isFormValid:",isFormValid);
-    if (this.props.history !== undefined && isFormValid.isValid) {
-      this.props.history.push("/payment/" +this.state.amount)
-    }
+      if (this.props.history !== undefined && isFormValid.isValid) {
+        this.props.history.push("/payment/" +this.state.amount)
+      }
   }
   render(){
     const validation = this.submitted
@@ -61,7 +65,7 @@ class Topup extends React.Component{
             <div className="col-10">
               <Header value="Wallet Top-up" inputtype="h2" /> 
             </div>
-            <div className="col-2 text-right">
+            <div className="col-2 text-right" onClick={this.goBack}>
               <i className="mdi mdi-close CloseIcon"></i>
             </div>
           </div>

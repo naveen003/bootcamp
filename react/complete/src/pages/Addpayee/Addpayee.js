@@ -35,6 +35,12 @@ class Addpayee extends React.Component{
       searchText:'',
       filteredList:friendsList
     }
+    this.goBack = this.goBack.bind(this);
+  }
+  goBack(){
+    if (this.props.history !== undefined) {
+      this.props.history.goBack()
+    } 
   }
 
   buttonClick(event) {
@@ -70,7 +76,15 @@ class Addpayee extends React.Component{
     return(
       <div className="container">
         <div className="walletTopUpOut">
-        <Header value="Add Payee" inputtype="h2" />
+
+        <div className="row">
+            <div className="col-10">
+            <Header value="Add Payee" inputtype="h2" />
+            </div>
+            <div className="col-2 text-right" onClick={this.goBack}>
+              <i className="mdi mdi-close CloseIcon"></i>
+            </div>
+          </div>
             <div className="row">
                 <div className="col-md-12">
                     <div className="pr">

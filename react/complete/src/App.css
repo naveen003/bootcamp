@@ -233,9 +233,13 @@ color: red
   display: block;
 }
 .cardDetails li .cardType img{
-  width: 30%;
+  width: 50%;
   max-width: 100%;
   float: right;
+}
+.imgPadding{
+  padding-right: 5px;
+  padding-left: 15px;
 }
 
 

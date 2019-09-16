@@ -62,10 +62,18 @@ class Paymentoption extends React.Component{
     this.radioSelected = this.radioSelected.bind(this);
     this.cvvChange = this.cvvChange.bind(this);
     this.addMoneytoWallet = this.addMoneytoWallet.bind(this);
+    this.goBack = this.goBack.bind(this);
+  }
+  goBack(){
+    if (this.props.history !== undefined) {
+      this.props.history.goBack()
+    } 
   }
   addMoneytoWallet(index){
     if(this.state.CardDetails[index].cvv !== null && !isNaN(parseInt(this.state.CardDetails[index].cvv))){
-      alert("Money Added to Wallet...");
+      if (this.props.history !== undefined) {
+        this.props.history.push("/home")
+      }
     }else{
       let {CardDetails} = this.state;
     CardDetails.map((inneritem,innerindex)=>{
@@ -101,7 +109,16 @@ class Paymentoption extends React.Component{
     return(
       <div className="container">
         <div className="walletTopUpOut">
+
+
+        <div className="row">
+            <div className="col-10">
             <h2>Wallet Top-up<small>Select your mode of payment</small></h2>
+            </div>
+            <div className="col-2 text-right" onClick={this.goBack}>
+              <i className="mdi mdi-close CloseIcon"></i>
+            </div>
+          </div>
             <ul className="cardDetails">
             {
               this.state.CardDetails.map((item,index)=>(
@@ -113,7 +130,7 @@ class Paymentoption extends React.Component{
                                 <span className="radio-button-circle"></span>
                             </label>
                         </div>
-                        <div className="col-6">
+                        <div className="col-8">
                             <div className="row">
                               <div className="col-md-4">
                               <h4>{item.bankname}<small style={{"display":(item.iscard ? "" : "none")}}>{item.cardnumber}</small></h4>
@@ -146,7 +163,7 @@ class Paymentoption extends React.Component{
                            
                             
                         </div>
-                        <div className="col-4" style={{"display":(item.iscard   ? "" : "none")}}>
+                        <div className="col-2 imgPadding" style={{"display":(item.iscard   ? "" : "none")}}>
                             <i className="cardType"><img src={item.cardtype === "master" ? MasterCard : VisaCard}/></i>
                         </div>
 
