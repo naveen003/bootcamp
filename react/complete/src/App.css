@@ -233,8 +233,9 @@ color: red
   display: block;
 }
 .cardDetails li .cardType img{
-  width: 100%;
+  width: 30%;
   max-width: 100%;
+  float: right;
 }
 
 
@@ -306,4 +307,25 @@ color: red
 }
 .cussorpointer{
   cursor: pointer !important;
+}
+.CloseIcon{
+  font-size: 24px;
+    position: relative;
+    top: -5px;
+    cursor: pointer;
+}
+
+@media(min-width: 320px) and (max-width: 767px){
+  .loginOut button{
+    margin-bottom: 20px;
+  }
+  .cardDetails li .cardType img {
+      width: 100%;
+      max-width: 100%;
+      float: right;
+      display: block;
+  }
+  .cardDetails .form-group{
+    margin-top: 20px;
+  }
 }

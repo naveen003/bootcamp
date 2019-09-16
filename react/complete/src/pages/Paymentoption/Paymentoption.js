@@ -107,20 +107,19 @@ class Paymentoption extends React.Component{
               this.state.CardDetails.map((item,index)=>(
                 <li key={index}>
                     <div className="row">
-                        <div className="col-md-1">
+                        <div className="col-1">
                             <input onChange={()=>this.radioSelected(item,index)} type="radio" name="common-radio-name" id={"radio-" + index} className="radio-button" />
                             <label htmlFor={"radio-" + index} className="radio-button-click-target">
                                 <span className="radio-button-circle"></span>
                             </label>
                         </div>
-                        <div className="col-md-4">
-                            <h4>{item.bankname}<small style={{"display":(item.iscard ? "" : "none")}}>{item.cardnumber}</small></h4>
-                        </div>
-                        <div className="col-md-1" style={{"display":(item.iscard   ? "" : "none")}}>
-                            <i className="cardType"><img src={item.cardtype === "master" ? MasterCard : VisaCard}/></i>
-                        </div>
-                        <div className="col-md-6" style={{"display":(item.iscard && item.selected ? "" : "none")}}>
+                        <div className="col-6">
                             <div className="row">
+                              <div className="col-md-4">
+                              <h4>{item.bankname}<small style={{"display":(item.iscard ? "" : "none")}}>{item.cardnumber}</small></h4>
+                              </div>
+                              <div className="col-md-8" style={{"display":(item.iscard && item.selected ? "" : "none")}}>
+                              <div className="row"  >
                                 <div className="col-md-6">
                                 <TextInput
                                       type="number"
@@ -142,7 +141,17 @@ class Paymentoption extends React.Component{
                                     onClick={()=>this.addMoneytoWallet(index)}/>
                                 </div>
                             </div>
+                                </div>
+                            </div>
+                           
+                            
                         </div>
+                        <div className="col-4" style={{"display":(item.iscard   ? "" : "none")}}>
+                            <i className="cardType"><img src={item.cardtype === "master" ? MasterCard : VisaCard}/></i>
+                        </div>
+
+                           
+
                     </div>
                 </li>
                 

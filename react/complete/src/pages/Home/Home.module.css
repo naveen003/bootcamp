@@ -140,17 +140,21 @@
     height: 50px;
     }
     .dashboardRightContent .top span {
-      width: 50px;
-      height: 50px;
-      font-size: 18px;
-      padding: 12px 0 0 0;
-      font-weight: bold;
+        width: 60px;
+        height: 60px;
+        font-size: 26px;
+        padding: 12px 0 0 0;
+        font-weight: bold;
       }
       .dashboardRightContent .circleOut {
         padding: 0 10px;
     }
     .dashboardRightContent .circleOut h6 {
-    font-size: 12px;
+        font-size: 14px;
+        word-break: break-all;
+    }
+    .dashboardLeftContent{
+        padding: 3rem 0;
     }
     .dashboardRightContent h4 {
     padding: 40px 0;

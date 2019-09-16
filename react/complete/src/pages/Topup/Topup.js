@@ -57,9 +57,17 @@ class Topup extends React.Component{
     return(
       <div className="container">
         <div className="walletTopUpOut">
-        <Header value="Wallet Top-up" inputtype="h2" />
+          <div className="row">
+            <div className="col-10">
+              <Header value="Wallet Top-up" inputtype="h2" /> 
+            </div>
+            <div className="col-2 text-right">
+              <i className="mdi mdi-close CloseIcon"></i>
+            </div>
+          </div>
+           
             <div className="row">
-                <div className="col-9">
+                <div className="col-md-9">
                 <TextInput
                   className="form-control"
                   type="text"
@@ -72,7 +80,7 @@ class Topup extends React.Component{
                   errormessage={validation.amount.message}
                 />
                 </div>
-                <div className="col-3">
+                <div className="col-md-3">
                     <Button
                     name="btnaddmoey"
                     type="button"
